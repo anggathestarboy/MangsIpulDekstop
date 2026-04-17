@@ -1,0 +1,66 @@
+# =========================
+# VISUAL STUDIO
+# =========================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# =========================
+# BUILD RESULT
+# =========================
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# =========================
+# LOG FILE
+# =========================
+*.log
+
+# =========================
+# NUGET
+# =========================
+packages/
+*.nupkg
+*.snupkg
+
+# keep packages.config
+!packages.config
+
+# =========================
+# WINDOWS
+# =========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# TEMP FILES
+# =========================
+*.tmp
+*.temp
+
+# =========================
+# GENERATED FILES
+# =========================
+*.cache
+*.ilk
+*.obj
+*.pdb
+*.lib
+
+# =========================
+# RIDER / OTHER IDE (optional)
+# =========================
+.idea/
+
+# =========================
+# RESHARPER
+# =========================
+_ReSharper*/
+*.DotSettings.user
