@@ -51,6 +51,16 @@ namespace MangsIpulAsli
             }
         }
 
+        private void btnSubProdukTambah_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is CreateProductForm))
+            {
+                CreateProductForm createForm = new CreateProductForm();
+                createForm.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
    
 
         private void btnMenuDashboard_Click(object sender, EventArgs e)

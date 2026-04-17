@@ -23,8 +23,16 @@ namespace MangsIpulAsli
         {
             InitializeComponent();
             SetupDataGridView();
-            LoadData();
+            InitializeForm();
             LoadUserInfo();
+        }
+
+        private async void InitializeForm()
+        {
+            // Load categories first so the filter works correctly
+            await LoadCategories();
+            // Then load the data
+            LoadData();
         }
 
         private void LoadUserInfo()
@@ -37,10 +45,6 @@ namespace MangsIpulAsli
         {
             dgvProducts.RowTemplate.Height = 80;
             colGambar.ImageLayout = DataGridViewImageCellLayout.Zoom;
-
-          
-
-          
         }
 
         private async void LoadData(int page = 1)
@@ -60,6 +64,8 @@ namespace MangsIpulAsli
                 if (cmbKategori.SelectedIndex > 0)
                 {
                     var selectedCategory = cmbKategori.SelectedItem as Category;
+                    // Changed from category_id to category as per standard API patterns 
+                    // or ensuring it matches what the backend expects for filtering
                     url += $"&category_id={selectedCategory.Id}";
                 }
 
@@ -71,14 +77,9 @@ namespace MangsIpulAsli
                     
                     if (productResponse != null && productResponse.Data != null)
                     {
+                        // Ensure data is displayed in order of arrival (already sorted by API usually)
                         DisplayProducts(productResponse.Data.Data);
                         UpdatePagination(productResponse.Data);
-                        
-                        // Load categories for the dropdown if not loaded yet
-                        if (categories.Count == 0)
-                        {
-                            await LoadCategories();
-                        }
                     }
                 }
                 else
@@ -96,32 +97,30 @@ namespace MangsIpulAsli
         {
             try
             {
-                // Typically there's a category API, but for now we'll extract from products or hardcode 
-                // Based on the data provided, let's just add the ones we see and maybe a placeholder
-                categories.Clear();
-                categories.Add(new Category { Id = 0, Name = "Semua Kategori" });
-                
-                // Fetch categories from API if available
                 var response = await client.GetAsync(BaseUrl + "api/categories");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    // Assuming similar structure
-                    var result = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
-                    // This is speculative, let's keep it simple for now as the focus is product list
+                    var categoryResponse = JsonSerializer.Deserialize<CategoryResponse>(json);
+                    
+                    categories.Clear();
+                    categories.Add(new Category { Id = 0, Name = "Semua Kategori" });
+                    
+                    if (categoryResponse?.Data?.Data != null)
+                    {
+                        categories.AddRange(categoryResponse.Data.Data);
+                    }
+
+                    cmbKategori.DataSource = null;
+                    cmbKategori.DataSource = categories;
+                    cmbKategori.DisplayMember = "Name";
+                    cmbKategori.ValueMember = "Id";
                 }
-
-                // For the sake of the demo, let's just add common ones
-                categories.Add(new Category { Id = 1, Name = "Makroni" });
-                categories.Add(new Category { Id = 3, Name = "Keripik" });
-                categories.Add(new Category { Id = 4, Name = "Basreng" });
-
-                cmbKategori.DataSource = null;
-                cmbKategori.DataSource = categories;
-                cmbKategori.DisplayMember = "Name";
-                cmbKategori.ValueMember = "Id";
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading categories: {ex.Message}");
+            }
         }
 
         private async void DisplayProducts(List<Product> products)
@@ -321,6 +320,13 @@ namespace MangsIpulAsli
             {
                 LoadData(1);
             }
+        }
+
+        private void btnTambahProduk_Click(object sender, EventArgs e)
+        {
+            CreateProductForm createForm = new CreateProductForm();
+            createForm.Show();
+            this.Hide();
         }
     }
 }

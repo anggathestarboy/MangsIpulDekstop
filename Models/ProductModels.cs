@@ -97,6 +97,24 @@ namespace MangsIpulAsli.Models
         public string Name { get; set; }
     }
 
+    public class CategoryResponse
+    {
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
+
+        [JsonPropertyName("data")]
+        public CategoryData Data { get; set; }
+    }
+
+    public class CategoryData
+    {
+        [JsonPropertyName("current_page")]
+        public int CurrentPage { get; set; }
+
+        [JsonPropertyName("data")]
+        public List<Category> Data { get; set; }
+    }
+
     public class PaginationLink
     {
         [JsonPropertyName("url")]

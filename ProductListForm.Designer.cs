@@ -260,6 +260,7 @@ namespace MangsIpulAsli
             this.btnTambahProduk.TabIndex = 2;
             this.btnTambahProduk.Text = "+ Tambah Produk";
             this.btnTambahProduk.UseVisualStyleBackColor = false;
+            this.btnTambahProduk.Click += new System.EventHandler(this.btnTambahProduk_Click);
             // 
             // cmbKategori
             // 
