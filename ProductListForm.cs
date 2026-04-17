@@ -18,6 +18,8 @@ namespace MangsIpulAsli
         private const string ApiUrl = BaseUrl + "api/products";
         private int currentPage = 1;
         private List<Category> categories = new List<Category>();
+        private bool _isInitialLoad = true;
+        private bool _isLoading = false;
 
         public ProductListForm()
         {
@@ -29,10 +31,13 @@ namespace MangsIpulAsli
 
         private async void InitializeForm()
         {
-            // Load categories first so the filter works correctly
+            _isInitialLoad = true;
+            // Load categories first
             await LoadCategories();
-            // Then load the data
-            LoadData();
+            _isInitialLoad = false;
+            
+            // Initial data load
+            await LoadData(1);
         }
 
         private void LoadUserInfo()
@@ -47,27 +52,34 @@ namespace MangsIpulAsli
             colGambar.ImageLayout = DataGridViewImageCellLayout.Zoom;
         }
 
-        private async void LoadData(int page = 1)
+        private async Task LoadData(int page = 1)
         {
+            if (_isLoading) return;
+
             try
             {
+                _isLoading = true;
                 currentPage = page;
-                string url = $"{ApiUrl}?page={page}";
+                
+                // Build URL with parameters
+                var queryParams = new List<string>();
+                queryParams.Add($"page={page}");
                 
                 // Add search filter if exists
                 if (txtSearch.Text != "Cari menu..." && !string.IsNullOrEmpty(txtSearch.Text))
                 {
-                    url += $"&search={txtSearch.Text}";
+                    queryParams.Add($"search={Uri.EscapeDataString(txtSearch.Text)}");
                 }
 
                 // Add category filter if exists
                 if (cmbKategori.SelectedIndex > 0)
                 {
                     var selectedCategory = cmbKategori.SelectedItem as Category;
-                    // Changed from category_id to category as per standard API patterns 
-                    // or ensuring it matches what the backend expects for filtering
-                    url += $"&category_id={selectedCategory.Id}";
+                    // Updated parameter to 'category' as requested
+                    queryParams.Add($"category={selectedCategory.Id}");
                 }
+
+                string url = $"{ApiUrl}?" + string.Join("&", queryParams);
 
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
@@ -77,7 +89,8 @@ namespace MangsIpulAsli
                     
                     if (productResponse != null && productResponse.Data != null)
                     {
-                        // Ensure data is displayed in order of arrival (already sorted by API usually)
+                        // Clear rows only when new data is ready
+                        dgvProducts.Rows.Clear();
                         DisplayProducts(productResponse.Data.Data);
                         UpdatePagination(productResponse.Data);
                     }
@@ -90,6 +103,10 @@ namespace MangsIpulAsli
             catch (Exception ex)
             {
                 MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _isLoading = false;
             }
         }
 
@@ -111,6 +128,8 @@ namespace MangsIpulAsli
                         categories.AddRange(categoryResponse.Data.Data);
                     }
 
+                    // Setting DataSource triggers SelectedIndexChanged, 
+                    // which is why we use _isInitialLoad flag to prevent double load
                     cmbKategori.DataSource = null;
                     cmbKategori.DataSource = categories;
                     cmbKategori.DisplayMember = "Name";
@@ -125,7 +144,7 @@ namespace MangsIpulAsli
 
         private async void DisplayProducts(List<Product> products)
         {
-            dgvProducts.Rows.Clear();
+            // Already cleared in LoadData
             int no = (currentPage - 1) * 10 + 1;
 
             foreach (var product in products)
@@ -145,8 +164,7 @@ namespace MangsIpulAsli
                     row.Cells["colGambar"].Value = await LoadImage(imageUrl + product.Img);
                 }
 
-           
-                row.Tag = product.Id; // Store product ID in row Tag
+                row.Tag = product.Id;
             }
         }
 

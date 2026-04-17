@@ -229,6 +229,8 @@ namespace MangsIpulAsli
             this.pbProductImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbProductImage.TabIndex = 0;
             this.pbProductImage.TabStop = false;
+            this.pbProductImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbProductImage.Click += new System.EventHandler(this.pbProductImage_Click);
             // 
             // lblImageTitle
             // 

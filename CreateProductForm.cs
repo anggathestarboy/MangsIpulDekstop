@@ -142,6 +142,7 @@ namespace MangsIpulAsli
 
                     // Send POST request
                     var response = await client.PostAsync(ApiUrl, content);
+                    string responseContent = await response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -150,8 +151,38 @@ namespace MangsIpulAsli
                     }
                     else
                     {
-                        string error = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Gagal menambahkan produk: {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            var errorData = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                            string errorMessage = "";
+
+                            if (errorData.TryGetProperty("errors", out var errorsProp))
+                            {
+                                List<string> errs = new List<string>();
+                                foreach (var prop in errorsProp.EnumerateObject())
+                                {
+                                    foreach (var detail in prop.Value.EnumerateArray())
+                                    {
+                                        errs.Add(detail.GetString());
+                                    }
+                                }
+                                errorMessage = string.Join("\n", errs);
+                            }
+                            else if (errorData.TryGetProperty("message", out var msgProp))
+                            {
+                                errorMessage = msgProp.GetString();
+                            }
+                            else
+                            {
+                                errorMessage = "Terjadi kesalahan tidak diketahui.";
+                            }
+                            
+                            MessageBox.Show(errorMessage, "Gagal (422/Validation)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        catch
+                        {
+                            MessageBox.Show($"Gagal menambahkan produk: {response.ReasonPhrase}\n{responseContent}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

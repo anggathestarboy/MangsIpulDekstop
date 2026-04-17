@@ -17,16 +17,27 @@ namespace MangsIpulAsli
         private const string BaseUrl = "https://mangsipul.alwaysdata.net/";
         private const string imageUrl = "https://mangsipul.alwaysdata.net/storage/";
         private const string ApiUrl = BaseUrl + "api/products";
+        private const string CategoryApiUrl = BaseUrl + "api/categories";
         private int productId;
         private Product currentProduct;
         private List<Category> categories = new List<Category>();
+        private string selectedImagePath = string.Empty;
+        private bool _isInitialLoad = true;
 
         public EditProductForm(int id)
         {
             InitializeComponent();
             this.productId = id;
-            LoadData();
+            InitializeForm();
             LoadUserInfo();
+        }
+
+        private async void InitializeForm()
+        {
+            _isInitialLoad = true;
+            await LoadCategories();
+            await LoadProductData();
+            _isInitialLoad = false;
         }
 
         private void LoadUserInfo()
@@ -35,22 +46,17 @@ namespace MangsIpulAsli
             navbarControl1.SetUserInfo(username, $"{username}@mangsipul.com", "Admin");
         }
 
-        private async void LoadData()
+        private async Task LoadProductData()
         {
             try
             {
-                // 1. Load Categories first
-                await LoadCategories();
-
-                // 2. Load Product Details
+                // Typically /api/products/{id}, but using list search if needed
                 var response = await client.GetAsync($"{ApiUrl}");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
                     var productResponse = JsonSerializer.Deserialize<ProductResponse>(json);
                     
-                    // Since there's no single product GET endpoint in your description, 
-                    // we find it from the list for now. Usually it's /api/products/{id}
                     currentProduct = productResponse?.Data?.Data?.Find(p => p.Id == productId);
 
                     if (currentProduct != null)
@@ -66,22 +72,34 @@ namespace MangsIpulAsli
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Gagal memuat data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Gagal memuat data produk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private async Task LoadCategories()
         {
-            // Placeholder for categories, same as ProductListForm
-            categories.Clear();
-            categories.Add(new Category { Id = 1, Name = "Makroni" });
-            categories.Add(new Category { Id = 3, Name = "Keripik" });
-            categories.Add(new Category { Id = 4, Name = "Basreng" });
-
-            cmbCategory.DataSource = null;
-            cmbCategory.DataSource = categories;
-            cmbCategory.DisplayMember = "Name";
-            cmbCategory.ValueMember = "Id";
+            try
+            {
+                var response = await client.GetAsync(CategoryApiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var categoryResponse = JsonSerializer.Deserialize<CategoryResponse>(json);
+                    
+                    if (categoryResponse?.Data?.Data != null)
+                    {
+                        categories = categoryResponse.Data.Data;
+                        cmbCategory.DataSource = null;
+                        cmbCategory.DataSource = categories;
+                        cmbCategory.DisplayMember = "Name";
+                        cmbCategory.ValueMember = "Id";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading categories: {ex.Message}");
+            }
         }
 
         private async void PopulateForm()
@@ -92,16 +110,19 @@ namespace MangsIpulAsli
             txtDescription.Text = currentProduct.Description;
             
             // Set Category
-            foreach (var cat in categories)
+            if (categories != null)
             {
-                if (cat.Id == currentProduct.CategoryId)
+                for (int i = 0; i < cmbCategory.Items.Count; i++)
                 {
-                    cmbCategory.SelectedItem = cat;
-                    break;
+                    if ((cmbCategory.Items[i] as Category).Id == currentProduct.CategoryId)
+                    {
+                        cmbCategory.SelectedIndex = i;
+                        break;
+                    }
                 }
             }
 
-            // Load Image
+            // Load Existing Image
             if (!string.IsNullOrEmpty(currentProduct.Img))
             {
                 try
@@ -116,44 +137,104 @@ namespace MangsIpulAsli
             }
         }
 
+        private void pbProductImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                ofd.Title = "Pilih Gambar Produk Baru";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    selectedImagePath = ofd.FileName;
+                    pbProductImage.Image = Image.FromFile(selectedImagePath);
+                    lblImageClickInfo.Text = Path.GetFileName(selectedImagePath);
+                }
+            }
+        }
+
         private async void btnUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtPrice.Text))
+                if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
-                    MessageBox.Show("Nama dan Harga wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Nama menu wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                var updateData = new
+                // Many APIs handle PUT with multipart differently. 
+                // We'll use POST with _method=PUT or pure PUT depending on backend requirements.
+                // Standard approach for Laravel/PHP backends with files is POST + _method=PUT
+                using (var content = new MultipartFormDataContent())
                 {
-                    title = txtName.Text,
-                    description = txtDescription.Text,
-                    category_id = (cmbCategory.SelectedItem as Category).Id,
-                    stock = int.Parse(txtStock.Text),
-                    price = decimal.Parse(txtPrice.Text)
-                };
+                    content.Add(new StringContent(txtName.Text), "title");
+                    content.Add(new StringContent(txtDescription.Text ?? ""), "description");
+                    content.Add(new StringContent((cmbCategory.SelectedItem as Category).Id.ToString()), "category_id");
+                    content.Add(new StringContent(txtStock.Text), "stock");
+                    content.Add(new StringContent(txtPrice.Text), "price");
+                    content.Add(new StringContent("PUT"), "_method"); // Laravel compatibility for multipart PUT
 
-                string json = JsonSerializer.Serialize(updateData);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    if (!string.IsNullOrEmpty(selectedImagePath))
+                    {
+                        byte[] imageData = File.ReadAllBytes(selectedImagePath);
+                        var imageContent = new ByteArrayContent(imageData);
+                        imageContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("image/" + Path.GetExtension(selectedImagePath).TrimStart('.').ToLower());
+                        content.Add(imageContent, "img", Path.GetFileName(selectedImagePath));
+                    }
 
-                string token = TokenManager.LoadToken();
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                    string token = TokenManager.LoadToken();
+                    client.DefaultRequestHeaders.Clear();
+                    if (!string.IsNullOrEmpty(token))
+                    {
+                        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                    }
 
-                // Method PUT as requested
-                var response = await client.PutAsync($"{ApiUrl}/{productId}", content);
+                    // We use POST with _method=PUT for multipart support
+                    var response = await client.PostAsync($"{ApiUrl}/{productId}", content);
+                    string responseContent = await response.Content.ReadAsStringAsync();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Produk berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnBack_Click(null, null);
-                }
-                else
-                {
-                    string error = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"Gagal memperbarui produk: {error}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Produk berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnBack_Click(null, null);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            var errorData = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                            string errorMessage = "";
+
+                            if (errorData.TryGetProperty("errors", out var errorsProp))
+                            {
+                                // Join all validation errors if they exist
+                                List<string> errs = new List<string>();
+                                foreach (var prop in errorsProp.EnumerateObject())
+                                {
+                                    foreach (var detail in prop.Value.EnumerateArray())
+                                    {
+                                        errs.Add(detail.GetString());
+                                    }
+                                }
+                                errorMessage = string.Join("\n", errs);
+                            }
+                            else if (errorData.TryGetProperty("message", out var msgProp))
+                            {
+                                errorMessage = msgProp.GetString();
+                            }
+                            else
+                            {
+                                errorMessage = "Terjadi kesalahan tidak diketahui.";
+                            }
+                            
+                            MessageBox.Show(errorMessage, "Gagal (422/Validation)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        catch
+                        {
+                            MessageBox.Show($"Gagal memperbarui produk: {response.ReasonPhrase}\n{responseContent}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
