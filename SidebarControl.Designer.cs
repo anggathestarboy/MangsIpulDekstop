@@ -38,6 +38,9 @@ namespace MangsIpulAsli
             this.btnSubProdukTambah = new System.Windows.Forms.Button();
             this.btnSubProdukList = new System.Windows.Forms.Button();
             this.btnMenuKategori = new System.Windows.Forms.Button();
+            this.pnlSubKategori = new System.Windows.Forms.Panel();
+            this.btnSubKategoriTambah = new System.Windows.Forms.Button();
+            this.btnSubKategoriList = new System.Windows.Forms.Button();
             this.btnMenuPesanan = new System.Windows.Forms.Button();
             this.btnMenuInteraksi = new System.Windows.Forms.Button();
             this.btnMenuPencatatan = new System.Windows.Forms.Button();
@@ -89,6 +92,7 @@ namespace MangsIpulAsli
             this.pnlMenu.Controls.Add(this.btnMenuProduk);
             this.pnlMenu.Controls.Add(this.pnlSubProduk);
             this.pnlMenu.Controls.Add(this.btnMenuKategori);
+            this.pnlMenu.Controls.Add(this.pnlSubKategori);
             this.pnlMenu.Controls.Add(this.btnMenuPesanan);
             this.pnlMenu.Controls.Add(this.btnMenuInteraksi);
             this.pnlMenu.Controls.Add(this.btnMenuPencatatan);
@@ -213,6 +217,52 @@ namespace MangsIpulAsli
             this.btnMenuKategori.Text = "🏷️ Kategori             >";
             this.btnMenuKategori.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuKategori.UseVisualStyleBackColor = true;
+            this.btnMenuKategori.Click += new System.EventHandler(this.btnMenuKategori_Click);
+            // 
+            // pnlSubKategori
+            // 
+            this.pnlSubKategori.Controls.Add(this.btnSubKategoriTambah);
+            this.pnlSubKategori.Controls.Add(this.btnSubKategoriList);
+            this.pnlSubKategori.Location = new System.Drawing.Point(0, 123);
+            this.pnlSubKategori.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlSubKategori.Name = "pnlSubKategori";
+            this.pnlSubKategori.Size = new System.Drawing.Size(195, 0);
+            this.pnlSubKategori.TabIndex = 4;
+            this.pnlSubKategori.Visible = false;
+            // 
+            // btnSubKategoriTambah
+            // 
+            this.btnSubKategoriTambah.FlatAppearance.BorderSize = 0;
+            this.btnSubKategoriTambah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubKategoriTambah.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubKategoriTambah.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubKategoriTambah.Location = new System.Drawing.Point(0, 32);
+            this.btnSubKategoriTambah.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubKategoriTambah.Name = "btnSubKategoriTambah";
+            this.btnSubKategoriTambah.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubKategoriTambah.Size = new System.Drawing.Size(195, 32);
+            this.btnSubKategoriTambah.TabIndex = 1;
+            this.btnSubKategoriTambah.Text = "Tambah Kategori";
+            this.btnSubKategoriTambah.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubKategoriTambah.UseVisualStyleBackColor = true;
+            this.btnSubKategoriTambah.Click += new System.EventHandler(this.btnSubKategoriTambah_Click);
+            // 
+            // btnSubKategoriList
+            // 
+            this.btnSubKategoriList.FlatAppearance.BorderSize = 0;
+            this.btnSubKategoriList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubKategoriList.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubKategoriList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubKategoriList.Location = new System.Drawing.Point(0, 0);
+            this.btnSubKategoriList.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubKategoriList.Name = "btnSubKategoriList";
+            this.btnSubKategoriList.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubKategoriList.Size = new System.Drawing.Size(195, 32);
+            this.btnSubKategoriList.TabIndex = 0;
+            this.btnSubKategoriList.Text = "List Kategori";
+            this.btnSubKategoriList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubKategoriList.UseVisualStyleBackColor = true;
+            this.btnSubKategoriList.Click += new System.EventHandler(this.btnSubKategoriList_Click);
             // 
             // btnMenuPesanan
             // 
@@ -225,7 +275,7 @@ namespace MangsIpulAsli
             this.btnMenuPesanan.Name = "btnMenuPesanan";
             this.btnMenuPesanan.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMenuPesanan.Size = new System.Drawing.Size(195, 41);
-            this.btnMenuPesanan.TabIndex = 4;
+            this.btnMenuPesanan.TabIndex = 5;
             this.btnMenuPesanan.Text = "🛒 Pesanan";
             this.btnMenuPesanan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuPesanan.UseVisualStyleBackColor = true;
@@ -328,6 +378,9 @@ namespace MangsIpulAsli
         private System.Windows.Forms.Button btnSubProdukTambah;
         private System.Windows.Forms.Button btnSubProdukList;
         private System.Windows.Forms.Button btnMenuKategori;
+        private System.Windows.Forms.Panel pnlSubKategori;
+        private System.Windows.Forms.Button btnSubKategoriTambah;
+        private System.Windows.Forms.Button btnSubKategoriList;
         private System.Windows.Forms.Button btnMenuPesanan;
         private System.Windows.Forms.Button btnMenuInteraksi;
         private System.Windows.Forms.Button btnMenuPencatatan;

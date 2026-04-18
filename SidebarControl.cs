@@ -8,6 +8,7 @@ namespace MangsIpulAsli
     public partial class SidebarControl : UserControl
     {
         private bool isProdukExpanded = false;
+        private bool isKategoriExpanded = false;
 
         public SidebarControl()
         {
@@ -39,6 +40,40 @@ namespace MangsIpulAsli
                 pnlSubProduk.Height = 0;
                 btnMenuProduk.Text = "🍔 Produk             >";
             }
+        }
+
+        private void btnMenuKategori_Click(object sender, EventArgs e)
+        {
+            isKategoriExpanded = !isKategoriExpanded;
+            if (isKategoriExpanded)
+            {
+                pnlSubKategori.Visible = true;
+                pnlSubKategori.Height = 100; // Increased height to ensure children are visible
+                btnMenuKategori.Text = "🏷️ Kategori             v";
+            }
+            else
+            {
+                pnlSubKategori.Visible = false;
+                pnlSubKategori.Height = 0;
+                btnMenuKategori.Text = "🏷️ Kategori             >";
+            }
+            pnlMenu.PerformLayout(); // Force layout refresh for FlowLayoutPanel
+        }
+
+        private void btnSubKategoriList_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is CategoryListForm))
+            {
+                CategoryListForm categoryList = new CategoryListForm();
+                categoryList.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
+        private void btnSubKategoriTambah_Click(object sender, EventArgs e)
+        {
+            // For now just show list or alert
+            MessageBox.Show("Fitur Tambah Kategori akan segera hadir.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSubProdukList_Click(object sender, EventArgs e)
