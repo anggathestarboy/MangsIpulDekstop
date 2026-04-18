@@ -155,10 +155,10 @@ namespace MangsIpulAsli
             this.colUpdate.Name = "colUpdate";
             this.colUpdate.ReadOnly = true;
             this.colUpdate.Width = 60;
-            this.colUpdate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235))))); // Blue
-            this.colUpdate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.colUpdate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.colUpdate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.colUpdate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.colUpdate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235))))); // Blue Icon
+            this.colUpdate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.colUpdate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
             this.colUpdate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             // 
             // colDelete
@@ -168,10 +168,10 @@ namespace MangsIpulAsli
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 60;
-            this.colDelete.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38))))); // Red
-            this.colDelete.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.colDelete.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.colDelete.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.colDelete.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.colDelete.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38))))); // Red Icon
+            this.colDelete.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.colDelete.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.colDelete.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             // 
             // pnlPagination
