@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MangsIpulAsli.Models;
+using System.Text;
 
 namespace MangsIpulAsli
 {
@@ -23,6 +24,91 @@ namespace MangsIpulAsli
             SetupDataGridView();
             LoadUserInfo();
             LoadData(1);
+
+            dgvCategories.CellContentClick += dgvCategories_CellContentClick;
+        }
+
+        private async void dgvCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            int categoryId = (int)dgvCategories.Rows[e.RowIndex].Tag;
+            string categoryName = dgvCategories.Rows[e.RowIndex].Cells["colNamaKategori"].Value.ToString();
+
+            if (dgvCategories.Columns[e.ColumnIndex].Name == "colUpdate")
+            {
+                using (var inputDialog = new InputDialog("Edit Kategori", "Masukkan nama kategori baru:", categoryName))
+                {
+                    if (inputDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        await UpdateCategory(categoryId, inputDialog.InputText);
+                    }
+                }
+            }
+            else if (dgvCategories.Columns[e.ColumnIndex].Name == "colDelete")
+            {
+                var result = MessageBox.Show($"Apakah Anda yakin ingin menghapus kategori '{categoryName}'?", 
+                    "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    await DeleteCategory(categoryId);
+                }
+            }
+        }
+
+        private async Task UpdateCategory(int id, string newName)
+        {
+            try
+            {
+                string token = TokenManager.LoadToken();
+                var requestData = new { name = newName };
+                string json = JsonSerializer.Serialize(requestData);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                
+                var response = await client.PutAsync($"{ApiUrl}/{id}", content);
+                string responseJson = await response.Content.ReadAsStringAsync();
+
+                using (JsonDocument doc = JsonDocument.Parse(responseJson))
+                {
+                    string message = doc.RootElement.GetProperty("message").GetString();
+                    MessageBox.Show(message, response.IsSuccessStatusCode ? "Sukses" : "Error", 
+                        MessageBoxButtons.OK, response.IsSuccessStatusCode ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                    
+                    if (response.IsSuccessStatusCode) await LoadData(currentPage);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kesalahan: {ex.Message}");
+            }
+        }
+
+        private async Task DeleteCategory(int id)
+        {
+            try
+            {
+                string token = TokenManager.LoadToken();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.DeleteAsync($"{ApiUrl}/{id}");
+                string responseJson = await response.Content.ReadAsStringAsync();
+
+                using (JsonDocument doc = JsonDocument.Parse(responseJson))
+                {
+                    string message = doc.RootElement.GetProperty("message").GetString();
+                    MessageBox.Show(message, response.IsSuccessStatusCode ? "Sukses" : "Error", 
+                        MessageBoxButtons.OK, response.IsSuccessStatusCode ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                    
+                    if (response.IsSuccessStatusCode) await LoadData(currentPage);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kesalahan: {ex.Message}");
+            }
         }
 
         private void LoadUserInfo()
