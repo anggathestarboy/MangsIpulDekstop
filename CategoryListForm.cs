@@ -275,8 +275,9 @@ namespace MangsIpulAsli
 
         private void btnTambahKategori_Click(object sender, EventArgs e)
         {
-            // Placeholder for now
-            MessageBox.Show("Fitur Tambah Kategori akan segera hadir.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CreateCategoryForm createForm = new CreateCategoryForm();
+            createForm.Show();
+            this.Hide();
         }
     }
 }
