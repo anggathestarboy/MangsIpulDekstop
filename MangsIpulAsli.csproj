@@ -98,6 +98,12 @@
     <Compile Include="CategoryListForm.Designer.cs">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCategoryForm.Designer.cs">
+      <DependentUpon>CreateCategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CategoryListForm.resx">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCategoryForm.resx">
+      <DependentUpon>CreateCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateProductForm.resx">
       <DependentUpon>CreateProductForm.cs</DependentUpon>

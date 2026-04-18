@@ -72,8 +72,12 @@ namespace MangsIpulAsli
 
         private void btnSubKategoriTambah_Click(object sender, EventArgs e)
         {
-            // For now just show list or alert
-            MessageBox.Show("Fitur Tambah Kategori akan segera hadir.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (this.ParentForm != null && !(this.ParentForm is CreateCategoryForm))
+            {
+                CreateCategoryForm createCategory = new CreateCategoryForm();
+                createCategory.Show();
+                this.ParentForm.Hide();
+            }
         }
 
         private void btnSubProdukList_Click(object sender, EventArgs e)
