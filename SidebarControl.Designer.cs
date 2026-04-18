@@ -161,6 +161,7 @@ namespace MangsIpulAsli
             this.btnSubProdukTerhapus.Text = "Produk Terhapus";
             this.btnSubProdukTerhapus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubProdukTerhapus.UseVisualStyleBackColor = true;
+            this.btnSubProdukTerhapus.Click += new System.EventHandler(this.btnSubProdukTerhapus_Click);
             // 
             // btnSubProdukTambah
             // 

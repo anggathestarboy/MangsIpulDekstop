@@ -30,7 +30,7 @@ namespace MangsIpulAsli
             if (isProdukExpanded)
             {
                 pnlSubProduk.Visible = true;
-                pnlSubProduk.Height = 120;
+                pnlSubProduk.Height = 140;
                 btnMenuProduk.Text = "🍔 Produk             v";
             }
             else
@@ -57,6 +57,16 @@ namespace MangsIpulAsli
             {
                 CreateProductForm createForm = new CreateProductForm();
                 createForm.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
+        private void btnSubProdukTerhapus_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is TrashedProductForm))
+            {
+                TrashedProductForm trashedForm = new TrashedProductForm();
+                trashedForm.Show();
                 this.ParentForm.Hide();
             }
         }

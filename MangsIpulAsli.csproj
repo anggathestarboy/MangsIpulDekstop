@@ -123,11 +123,20 @@
     <Compile Include="NavbarControl.Designer.cs">
       <DependentUpon>NavbarControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProductListForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProductListForm.Designer.cs">
       <DependentUpon>ProductListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrashedProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrashedProductForm.Designer.cs">
+      <DependentUpon>TrashedProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SidebarControl.cs">
       <SubType>UserControl</SubType>
