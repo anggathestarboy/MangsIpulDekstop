@@ -152,6 +152,9 @@ namespace MangsIpulAsli
                 int rowIndex = dgvProducts.Rows.Add();
                 var row = dgvProducts.Rows[rowIndex];
 
+                // Set Tag early
+                row.Tag = product.Id;
+
                 row.Cells["colNo"].Value = no++;
                 row.Cells["colMenu"].Value = product.Title;
                 row.Cells["colKategori"].Value = product.Category?.Name ?? "-";
@@ -163,8 +166,6 @@ namespace MangsIpulAsli
                 {
                     row.Cells["colGambar"].Value = await LoadImage(imageUrl + product.Img);
                 }
-
-                row.Tag = product.Id;
             }
         }
 
@@ -172,38 +173,27 @@ namespace MangsIpulAsli
         {
             if (e.RowIndex < 0) return;
 
-            // Check if clicked cell is in the Aksi column
-            if (dgvProducts.Columns[e.ColumnIndex].Name == "colAksi")
+            if (dgvProducts.Rows[e.RowIndex].Tag == null) return;
+            int productId = (int)dgvProducts.Rows[e.RowIndex].Tag;
+            string productTitle = dgvProducts.Rows[e.RowIndex].Cells["colMenu"].Value?.ToString() ?? "Produk";
+
+            if (dgvProducts.Columns[e.ColumnIndex].Name == "colUpdate")
             {
-                int productId = (int)dgvProducts.Rows[e.RowIndex].Tag;
-                string productTitle = dgvProducts.Rows[e.RowIndex].Cells["colMenu"].Value.ToString();
+                EditProductForm editForm = new EditProductForm(productId);
+                editForm.Show();
+                this.Hide();
+            }
+            else if (dgvProducts.Columns[e.ColumnIndex].Name == "colDelete")
+            {
+                var confirmResult = MessageBox.Show(
+                    $"Apakah Anda yakin ingin menghapus produk '{productTitle}'?",
+                    "Konfirmasi Hapus",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
 
-                // Custom choice dialog using a simple MessageBox or a custom one
-                // For simplicity and to avoid creating another form, let's use a Task Dialog if available or simple choice
-                var result = MessageBox.Show(
-                    $"Pilih aksi untuk '{productTitle}':\n\n[Yes] untuk Edit\n[No] untuk Delete\n[Cancel] untuk Batal",
-                    "Aksi Produk",
-                    MessageBoxButtons.YesNoCancel,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes) // EDIT
+                if (confirmResult == DialogResult.Yes)
                 {
-                    EditProductForm editForm = new EditProductForm(productId);
-                    editForm.Show();
-                    this.Hide();
-                }
-                else if (result == DialogResult.No) // DELETE
-                {
-                    var confirmResult = MessageBox.Show(
-                        $"Apakah Anda yakin ingin menghapus produk '{productTitle}'?",
-                        "Konfirmasi Hapus",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning);
-
-                    if (confirmResult == DialogResult.Yes)
-                    {
-                        await DeleteProduct(productId);
-                    }
+                    await DeleteProduct(productId);
                 }
             }
         }
@@ -226,12 +216,23 @@ namespace MangsIpulAsli
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Produk berhasil dihapus.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(currentPage); // Refresh current page
+                    await LoadData(currentPage); // Refresh current page
                 }
                 else
                 {
-                    string errorMsg = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"Gagal menghapus produk: {response.ReasonPhrase}\n{errorMsg}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorJson = await response.Content.ReadAsStringAsync();
+                    try
+                    {
+                        var errorObj = JsonSerializer.Deserialize<Dictionary<string, object>>(errorJson);
+                        string message = errorObj != null && errorObj.ContainsKey("message") 
+                            ? errorObj["message"].ToString() 
+                            : "Gagal menghapus produk.";
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"Gagal menghapus produk: {response.ReasonPhrase}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception ex)

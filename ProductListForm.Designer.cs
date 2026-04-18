@@ -41,7 +41,8 @@ namespace MangsIpulAsli
             this.colHarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStok = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGambar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colAksi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlPagination = new System.Windows.Forms.Panel();
             this.lblPaginationInfo = new System.Windows.Forms.Label();
             this.flpPaginationButtons = new System.Windows.Forms.FlowLayoutPanel();
@@ -111,7 +112,8 @@ namespace MangsIpulAsli
             this.colHarga,
             this.colStok,
             this.colGambar,
-            this.colAksi});
+            this.colUpdate,
+            this.colDelete});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -177,34 +179,35 @@ namespace MangsIpulAsli
             this.colGambar.ReadOnly = true;
             this.colGambar.Width = 100;
             // 
-            // colEdit
+            // colUpdate
             // 
-
+            this.colUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colUpdate.HeaderText = "Edit";
+            this.colUpdate.Name = "colUpdate";
+            this.colUpdate.ReadOnly = true;
+            this.colUpdate.Text = "Edit";
+            this.colUpdate.UseColumnTextForButtonValue = true;
+            this.colUpdate.Width = 100;
+            this.colUpdate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(30, 58, 138);
+            this.colUpdate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.colUpdate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(30, 58, 138);
+            this.colUpdate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.colUpdate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
-            // colAksi
+            // colDelete
             // 
-            this.colAksi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colAksi.HeaderText = "Aksi";
-            this.colAksi.Name = "colAksi";
-            this.colAksi.ReadOnly = true;
-            this.colAksi.Text = "Aksi";
-            this.colAksi.UseColumnTextForButtonValue = true;
-            this.colAksi.Width = 100;
-
-            // hitam (tidak terlalu pekat biar modern)
-            this.colAksi.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(31, 41, 55);
-
-            // teks putih
-            this.colAksi.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-
-            // saat dipilih (sedikit lebih terang)
-            this.colAksi.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(55, 65, 81);
-
-            // teks tetap putih
-            this.colAksi.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-
-            // biar rata tengah
-            this.colAksi.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colDelete.HeaderText = "Hapus";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Text = "Hapus";
+            this.colDelete.UseColumnTextForButtonValue = true;
+            this.colDelete.Width = 100;
+            this.colDelete.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(239, 68, 68);
+            this.colDelete.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.colDelete.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(220, 38, 38);
+            this.colDelete.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.colDelete.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // pnlPagination
             // 
@@ -385,7 +388,7 @@ namespace MangsIpulAsli
         private System.Windows.Forms.DataGridViewTextBoxColumn colHarga;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStok;
         private System.Windows.Forms.DataGridViewImageColumn colGambar;
-        private System.Windows.Forms.DataGridViewButtonColumn colEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn colAksi;
+        private System.Windows.Forms.DataGridViewButtonColumn colUpdate;
+        private System.Windows.Forms.DataGridViewButtonColumn colDelete;
     }
 }
