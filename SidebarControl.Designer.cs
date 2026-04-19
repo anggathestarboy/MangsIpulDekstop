@@ -80,7 +80,7 @@ namespace MangsIpulAsli
             this.btnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnLogout.Size = new System.Drawing.Size(195, 41);
             this.btnLogout.TabIndex = 2;
-            this.btnLogout.Text = " logout Logout";
+            this.btnLogout.Text = " Logout";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
