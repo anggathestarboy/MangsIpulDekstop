@@ -56,6 +56,24 @@ namespace MangsIpulAsli
             dgvTransactions.DefaultCellStyle.Font = new Font("Segoe UI", 9);
             
             dgvTransactions.CellFormatting += DgvTransactions_CellFormatting;
+            dgvTransactions.CellDoubleClick += DgvTransactions_CellDoubleClick;
+        }
+
+        private void DgvTransactions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var transaction = dgvTransactions.Rows[e.RowIndex].Tag as Transaction;
+                if (transaction != null)
+                {
+                    TransactionDetailForm detailForm = new TransactionDetailForm(transaction);
+                    if (detailForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // Refresh data if something changed
+                        _ = LoadData(currentPage);
+                    }
+                }
+            }
         }
 
         private void DgvTransactions_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -65,6 +83,10 @@ namespace MangsIpulAsli
                 string status = e.Value.ToString().ToLower();
                 switch (status)
                 {
+                    case "pending_admin":
+                        e.CellStyle.ForeColor = Color.FromArgb(245, 158, 11); // Amber/Orange
+                        e.Value = "🕒 Pending Admin";
+                        break;
                     case "sudah_diterima":
                         e.CellStyle.ForeColor = Color.FromArgb(147, 51, 234); // Purple
                         e.Value = "✔ Sudah Diterima";

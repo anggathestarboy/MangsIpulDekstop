@@ -154,6 +154,12 @@
     <Compile Include="TransactionListForm.Designer.cs">
       <DependentUpon>TransactionListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransactionDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransactionDetailForm.Designer.cs">
+      <DependentUpon>TransactionDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrashedProductForm.cs">
       <SubType>Form</SubType>
     </Compile>

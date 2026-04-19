@@ -220,6 +220,7 @@ namespace MangsIpulAsli
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "All Status",
+            "Pending Admin",
             "Sudah Diterima",
             "Sedang Dikirim",
             "Paid",
