@@ -112,6 +112,16 @@ namespace MangsIpulAsli
 
    
 
+        private void btnMenuPesanan_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is TransactionListForm))
+            {
+                TransactionListForm transactionList = new TransactionListForm();
+                transactionList.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
         private void btnMenuDashboard_Click(object sender, EventArgs e)
         {
             if (this.ParentForm != null && !(this.ParentForm is Dashboard))

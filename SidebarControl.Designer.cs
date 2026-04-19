@@ -279,6 +279,7 @@ namespace MangsIpulAsli
             this.btnMenuPesanan.Text = "🛒 Pesanan";
             this.btnMenuPesanan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuPesanan.UseVisualStyleBackColor = true;
+            this.btnMenuPesanan.Click += new System.EventHandler(this.btnMenuPesanan_Click);
             // 
             // btnMenuInteraksi
             // 

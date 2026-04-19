@@ -132,6 +132,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Models\ProductModels.cs" />
+    <Compile Include="Models\TransactionModels.cs" />
     <Compile Include="NavbarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +147,12 @@
     </Compile>
     <Compile Include="ProductListForm.Designer.cs">
       <DependentUpon>ProductListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransactionListForm.Designer.cs">
+      <DependentUpon>TransactionListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TrashedProductForm.cs">
       <SubType>Form</SubType>
