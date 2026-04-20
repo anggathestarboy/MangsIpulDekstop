@@ -37,6 +37,11 @@ namespace MangsIpulAsli
             this.btnSubTestimoni = new System.Windows.Forms.Button();
             this.btnSubPesan = new System.Windows.Forms.Button();
             this.btnMenuPencatatan = new System.Windows.Forms.Button();
+            this.pnlSubPencatatan = new System.Windows.Forms.Panel();
+            this.btnSubRiwayatWallet = new System.Windows.Forms.Button();
+            this.btnSubTipeTransaksi = new System.Windows.Forms.Button();
+            this.btnSubBuatWallet = new System.Windows.Forms.Button();
+            this.btnSubListWallets = new System.Windows.Forms.Button();
             this.btnMenuPengaturan = new System.Windows.Forms.Button();
             this.pnlSubPengaturan = new System.Windows.Forms.Panel();
             this.btnSubProfil = new System.Windows.Forms.Button();
@@ -48,6 +53,7 @@ namespace MangsIpulAsli
             this.pnlSubProduk.SuspendLayout();
             this.pnlSubKategori.SuspendLayout();
             this.pnlSubInteraksi.SuspendLayout();
+            this.pnlSubPencatatan.SuspendLayout();
             this.pnlSubPengaturan.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSidebarLogo)).BeginInit();
@@ -96,6 +102,7 @@ namespace MangsIpulAsli
             this.pnlMenu.Controls.Add(this.btnMenuInteraksi);
             this.pnlMenu.Controls.Add(this.pnlSubInteraksi);
             this.pnlMenu.Controls.Add(this.btnMenuPencatatan);
+            this.pnlMenu.Controls.Add(this.pnlSubPencatatan);
             this.pnlMenu.Controls.Add(this.btnMenuPengaturan);
             this.pnlMenu.Controls.Add(this.pnlSubPengaturan);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -358,6 +365,84 @@ namespace MangsIpulAsli
             this.btnMenuPencatatan.Text = "💵 Pencatatan          >";
             this.btnMenuPencatatan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuPencatatan.UseVisualStyleBackColor = true;
+            this.btnMenuPencatatan.Click += new System.EventHandler(this.btnMenuPencatatan_Click);
+            // 
+            // pnlSubPencatatan
+            // 
+            this.pnlSubPencatatan.Controls.Add(this.btnSubRiwayatWallet);
+            this.pnlSubPencatatan.Controls.Add(this.btnSubTipeTransaksi);
+            this.pnlSubPencatatan.Controls.Add(this.btnSubBuatWallet);
+            this.pnlSubPencatatan.Controls.Add(this.btnSubListWallets);
+            this.pnlSubPencatatan.Location = new System.Drawing.Point(0, 246);
+            this.pnlSubPencatatan.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlSubPencatatan.Name = "pnlSubPencatatan";
+            this.pnlSubPencatatan.Size = new System.Drawing.Size(195, 0);
+            this.pnlSubPencatatan.TabIndex = 11;
+            this.pnlSubPencatatan.Visible = false;
+            // 
+            // btnSubRiwayatWallet
+            // 
+            this.btnSubRiwayatWallet.FlatAppearance.BorderSize = 0;
+            this.btnSubRiwayatWallet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubRiwayatWallet.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubRiwayatWallet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubRiwayatWallet.Location = new System.Drawing.Point(0, 96);
+            this.btnSubRiwayatWallet.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubRiwayatWallet.Name = "btnSubRiwayatWallet";
+            this.btnSubRiwayatWallet.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubRiwayatWallet.Size = new System.Drawing.Size(195, 32);
+            this.btnSubRiwayatWallet.TabIndex = 3;
+            this.btnSubRiwayatWallet.Text = "Riwayat Wallet";
+            this.btnSubRiwayatWallet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubRiwayatWallet.UseVisualStyleBackColor = true;
+            // 
+            // btnSubTipeTransaksi
+            // 
+            this.btnSubTipeTransaksi.FlatAppearance.BorderSize = 0;
+            this.btnSubTipeTransaksi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubTipeTransaksi.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubTipeTransaksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubTipeTransaksi.Location = new System.Drawing.Point(0, 64);
+            this.btnSubTipeTransaksi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubTipeTransaksi.Name = "btnSubTipeTransaksi";
+            this.btnSubTipeTransaksi.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubTipeTransaksi.Size = new System.Drawing.Size(195, 32);
+            this.btnSubTipeTransaksi.TabIndex = 2;
+            this.btnSubTipeTransaksi.Text = "Tipe Transaksi";
+            this.btnSubTipeTransaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubTipeTransaksi.UseVisualStyleBackColor = true;
+            // 
+            // btnSubBuatWallet
+            // 
+            this.btnSubBuatWallet.FlatAppearance.BorderSize = 0;
+            this.btnSubBuatWallet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubBuatWallet.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubBuatWallet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubBuatWallet.Location = new System.Drawing.Point(0, 32);
+            this.btnSubBuatWallet.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubBuatWallet.Name = "btnSubBuatWallet";
+            this.btnSubBuatWallet.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubBuatWallet.Size = new System.Drawing.Size(195, 32);
+            this.btnSubBuatWallet.TabIndex = 1;
+            this.btnSubBuatWallet.Text = "Buat Wallet Baru";
+            this.btnSubBuatWallet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubBuatWallet.UseVisualStyleBackColor = true;
+            // 
+            // btnSubListWallets
+            // 
+            this.btnSubListWallets.FlatAppearance.BorderSize = 0;
+            this.btnSubListWallets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubListWallets.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubListWallets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubListWallets.Location = new System.Drawing.Point(0, 0);
+            this.btnSubListWallets.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubListWallets.Name = "btnSubListWallets";
+            this.btnSubListWallets.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubListWallets.Size = new System.Drawing.Size(195, 32);
+            this.btnSubListWallets.TabIndex = 0;
+            this.btnSubListWallets.Text = "List Wallets";
+            this.btnSubListWallets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubListWallets.UseVisualStyleBackColor = true;
             // 
             // btnMenuPengaturan
             // 
@@ -454,6 +539,7 @@ namespace MangsIpulAsli
             this.pnlSubProduk.ResumeLayout(false);
             this.pnlSubKategori.ResumeLayout(false);
             this.pnlSubInteraksi.ResumeLayout(false);
+            this.pnlSubPencatatan.ResumeLayout(false);
             this.pnlSubPengaturan.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbSidebarLogo)).EndInit();
@@ -480,6 +566,11 @@ namespace MangsIpulAsli
         private System.Windows.Forms.Button btnSubTestimoni;
         private System.Windows.Forms.Button btnSubPesan;
         private System.Windows.Forms.Button btnMenuPencatatan;
+        private System.Windows.Forms.Panel pnlSubPencatatan;
+        private System.Windows.Forms.Button btnSubListWallets;
+        private System.Windows.Forms.Button btnSubBuatWallet;
+        private System.Windows.Forms.Button btnSubTipeTransaksi;
+        private System.Windows.Forms.Button btnSubRiwayatWallet;
         private System.Windows.Forms.Button btnMenuPengaturan;
         private System.Windows.Forms.Panel pnlSubPengaturan;
         private System.Windows.Forms.Button btnSubProfil;

@@ -11,11 +11,32 @@ namespace MangsIpulAsli
         private bool isKategoriExpanded = false;
         private bool isInteraksiExpanded = false;
         private bool isPengaturanExpanded = false;
+        private bool isPencatatanExpanded = false;
 
         public SidebarControl()
         {
             InitializeComponent();
             SetupUI();
+        }
+        
+        // ... (rest of the methods)
+
+        private void btnMenuPencatatan_Click(object sender, EventArgs e)
+        {
+            isPencatatanExpanded = !isPencatatanExpanded;
+            if (isPencatatanExpanded)
+            {
+                pnlSubPencatatan.Visible = true;
+                pnlSubPencatatan.Height = 135; // Height for 4 sub-buttons
+                btnMenuPencatatan.Text = "💵 Pencatatan          v";
+            }
+            else
+            {
+                pnlSubPencatatan.Visible = false;
+                pnlSubPencatatan.Height = 0;
+                btnMenuPencatatan.Text = "💵 Pencatatan          >";
+            }
+            pnlMenu.PerformLayout();
         }
 
         private void SetupUI()
