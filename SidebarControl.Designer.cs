@@ -1,16 +1,12 @@
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace MangsIpulAsli
 {
     partial class SidebarControl
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,12 +16,6 @@ namespace MangsIpulAsli
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
-
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
@@ -48,6 +38,9 @@ namespace MangsIpulAsli
             this.btnSubPesan = new System.Windows.Forms.Button();
             this.btnMenuPencatatan = new System.Windows.Forms.Button();
             this.btnMenuPengaturan = new System.Windows.Forms.Button();
+            this.pnlSubPengaturan = new System.Windows.Forms.Panel();
+            this.btnSubProfil = new System.Windows.Forms.Button();
+            this.btnSubPassword = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pbSidebarLogo = new System.Windows.Forms.PictureBox();
             this.pnlSidebar.SuspendLayout();
@@ -55,6 +48,7 @@ namespace MangsIpulAsli
             this.pnlSubProduk.SuspendLayout();
             this.pnlSubKategori.SuspendLayout();
             this.pnlSubInteraksi.SuspendLayout();
+            this.pnlSubPengaturan.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSidebarLogo)).BeginInit();
             this.SuspendLayout();
@@ -103,11 +97,12 @@ namespace MangsIpulAsli
             this.pnlMenu.Controls.Add(this.pnlSubInteraksi);
             this.pnlMenu.Controls.Add(this.btnMenuPencatatan);
             this.pnlMenu.Controls.Add(this.btnMenuPengaturan);
+            this.pnlMenu.Controls.Add(this.pnlSubPengaturan);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMenu.Location = new System.Drawing.Point(0, 164);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(195, 714);
+            this.pnlMenu.Size = new System.Drawing.Size(195, 673);
             this.pnlMenu.TabIndex = 1;
             // 
             // btnMenuDashboard
@@ -189,7 +184,6 @@ namespace MangsIpulAsli
             this.btnSubProdukTambah.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubProdukTambah.UseVisualStyleBackColor = true;
             this.btnSubProdukTambah.Click += new System.EventHandler(this.btnSubProdukTambah_Click);
-           
             // 
             // btnSubProdukList
             // 
@@ -298,7 +292,7 @@ namespace MangsIpulAsli
             this.btnMenuInteraksi.Name = "btnMenuInteraksi";
             this.btnMenuInteraksi.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMenuInteraksi.Size = new System.Drawing.Size(195, 41);
-            this.btnMenuInteraksi.TabIndex = 5;
+            this.btnMenuInteraksi.TabIndex = 6;
             this.btnMenuInteraksi.Text = "💬 Interaksi              >";
             this.btnMenuInteraksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuInteraksi.UseVisualStyleBackColor = true;
@@ -312,7 +306,7 @@ namespace MangsIpulAsli
             this.pnlSubInteraksi.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSubInteraksi.Name = "pnlSubInteraksi";
             this.pnlSubInteraksi.Size = new System.Drawing.Size(195, 0);
-            this.pnlSubInteraksi.TabIndex = 6;
+            this.pnlSubInteraksi.TabIndex = 7;
             this.pnlSubInteraksi.Visible = false;
             // 
             // btnSubTestimoni
@@ -360,7 +354,7 @@ namespace MangsIpulAsli
             this.btnMenuPencatatan.Name = "btnMenuPencatatan";
             this.btnMenuPencatatan.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMenuPencatatan.Size = new System.Drawing.Size(195, 41);
-            this.btnMenuPencatatan.TabIndex = 6;
+            this.btnMenuPencatatan.TabIndex = 8;
             this.btnMenuPencatatan.Text = "💵 Pencatatan          >";
             this.btnMenuPencatatan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuPencatatan.UseVisualStyleBackColor = true;
@@ -376,10 +370,56 @@ namespace MangsIpulAsli
             this.btnMenuPengaturan.Name = "btnMenuPengaturan";
             this.btnMenuPengaturan.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMenuPengaturan.Size = new System.Drawing.Size(195, 41);
-            this.btnMenuPengaturan.TabIndex = 7;
+            this.btnMenuPengaturan.TabIndex = 9;
             this.btnMenuPengaturan.Text = "⚙️ Pengaturan           >";
             this.btnMenuPengaturan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuPengaturan.UseVisualStyleBackColor = true;
+            this.btnMenuPengaturan.Click += new System.EventHandler(this.btnMenuPengaturan_Click);
+            // 
+            // pnlSubPengaturan
+            // 
+            this.pnlSubPengaturan.Controls.Add(this.btnSubPassword);
+            this.pnlSubPengaturan.Controls.Add(this.btnSubProfil);
+            this.pnlSubPengaturan.Location = new System.Drawing.Point(0, 287);
+            this.pnlSubPengaturan.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlSubPengaturan.Name = "pnlSubPengaturan";
+            this.pnlSubPengaturan.Size = new System.Drawing.Size(195, 0);
+            this.pnlSubPengaturan.TabIndex = 10;
+            this.pnlSubPengaturan.Visible = false;
+            // 
+            // btnSubProfil
+            // 
+            this.btnSubProfil.FlatAppearance.BorderSize = 0;
+            this.btnSubProfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubProfil.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubProfil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubProfil.Location = new System.Drawing.Point(0, 0);
+            this.btnSubProfil.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubProfil.Name = "btnSubProfil";
+            this.btnSubProfil.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubProfil.Size = new System.Drawing.Size(195, 32);
+            this.btnSubProfil.TabIndex = 0;
+            this.btnSubProfil.Text = "Profil Akun";
+            this.btnSubProfil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubProfil.UseVisualStyleBackColor = true;
+            this.btnSubProfil.Click += new System.EventHandler(this.btnSubProfil_Click);
+            // 
+            // btnSubPassword
+            // 
+            this.btnSubPassword.FlatAppearance.BorderSize = 0;
+            this.btnSubPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubPassword.Location = new System.Drawing.Point(0, 32);
+            this.btnSubPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubPassword.Name = "btnSubPassword";
+            this.btnSubPassword.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubPassword.Size = new System.Drawing.Size(195, 32);
+            this.btnSubPassword.TabIndex = 1;
+            this.btnSubPassword.Text = "Ganti Password";
+            this.btnSubPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubPassword.UseVisualStyleBackColor = true;
+            this.btnSubPassword.Click += new System.EventHandler(this.btnSubPassword_Click);
             // 
             // pnlLogo
             // 
@@ -391,7 +431,6 @@ namespace MangsIpulAsli
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(195, 164);
             this.pnlLogo.TabIndex = 0;
-            this.pnlLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLogo_Paint);
             // 
             // pbSidebarLogo
             // 
@@ -413,13 +452,14 @@ namespace MangsIpulAsli
             this.pnlSidebar.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.pnlSubProduk.ResumeLayout(false);
+            this.pnlSubKategori.ResumeLayout(false);
+            this.pnlSubInteraksi.ResumeLayout(false);
+            this.pnlSubPengaturan.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbSidebarLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
-
-        #endregion
 
         private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.Button btnLogout;
@@ -441,6 +481,9 @@ namespace MangsIpulAsli
         private System.Windows.Forms.Button btnSubPesan;
         private System.Windows.Forms.Button btnMenuPencatatan;
         private System.Windows.Forms.Button btnMenuPengaturan;
+        private System.Windows.Forms.Panel pnlSubPengaturan;
+        private System.Windows.Forms.Button btnSubProfil;
+        private System.Windows.Forms.Button btnSubPassword;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.PictureBox pbSidebarLogo;
     }

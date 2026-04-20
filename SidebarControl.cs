@@ -10,6 +10,7 @@ namespace MangsIpulAsli
         private bool isProdukExpanded = false;
         private bool isKategoriExpanded = false;
         private bool isInteraksiExpanded = false;
+        private bool isPengaturanExpanded = false;
 
         public SidebarControl()
         {
@@ -24,6 +25,44 @@ namespace MangsIpulAsli
                 pbSidebarLogo.ImageLocation = "https://mangsipul.vercel.app/logo.png"; 
             } 
             catch { }
+        }
+
+        private void btnMenuPengaturan_Click(object sender, EventArgs e)
+        {
+            isPengaturanExpanded = !isPengaturanExpanded;
+            if (isPengaturanExpanded)
+            {
+                pnlSubPengaturan.Visible = true;
+                pnlSubPengaturan.Height = 70;
+                btnMenuPengaturan.Text = "⚙️ Pengaturan           v";
+            }
+            else
+            {
+                pnlSubPengaturan.Visible = false;
+                pnlSubPengaturan.Height = 0;
+                btnMenuPengaturan.Text = "⚙️ Pengaturan           >";
+            }
+            pnlMenu.PerformLayout();
+        }
+
+        private void btnSubProfil_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is ProfileForm))
+            {
+                ProfileForm profileForm = new ProfileForm();
+                profileForm.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
+        private void btnSubPassword_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is ResetPasswordForm))
+            {
+                ResetPasswordForm resetForm = new ResetPasswordForm();
+                resetForm.Show();
+                this.ParentForm.Hide();
+            }
         }
 
         private void btnMenuInteraksi_Click(object sender, EventArgs e)
