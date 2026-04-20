@@ -132,6 +132,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Models\ProductModels.cs" />
+    <Compile Include="Models\MessageModels.cs" />
+    <Compile Include="Models\RatingModels.cs" />
     <Compile Include="Models\TransactionModels.cs" />
     <Compile Include="NavbarControl.cs">
       <SubType>UserControl</SubType>
@@ -147,6 +149,24 @@
     </Compile>
     <Compile Include="ProductListForm.Designer.cs">
       <DependentUpon>ProductListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageListForm.Designer.cs">
+      <DependentUpon>MessageListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageDetailDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageDetailDialog.Designer.cs">
+      <DependentUpon>MessageDetailDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RatingListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RatingListForm.Designer.cs">
+      <DependentUpon>RatingListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TransactionListForm.cs">
       <SubType>Form</SubType>
@@ -189,11 +209,20 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MessageDetailDialog.resx">
+      <DependentUpon>MessageDetailDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NavbarControl.resx">
       <DependentUpon>NavbarControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductListForm.resx">
       <DependentUpon>ProductListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageListForm.resx">
+      <DependentUpon>MessageListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RatingListForm.resx">
+      <DependentUpon>RatingListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SidebarControl.resx">
       <DependentUpon>SidebarControl.cs</DependentUpon>

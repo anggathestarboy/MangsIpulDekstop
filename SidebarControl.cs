@@ -9,6 +9,7 @@ namespace MangsIpulAsli
     {
         private bool isProdukExpanded = false;
         private bool isKategoriExpanded = false;
+        private bool isInteraksiExpanded = false;
 
         public SidebarControl()
         {
@@ -23,6 +24,44 @@ namespace MangsIpulAsli
                 pbSidebarLogo.ImageLocation = "https://mangsipul.vercel.app/logo.png"; 
             } 
             catch { }
+        }
+
+        private void btnMenuInteraksi_Click(object sender, EventArgs e)
+        {
+            isInteraksiExpanded = !isInteraksiExpanded;
+            if (isInteraksiExpanded)
+            {
+                pnlSubInteraksi.Visible = true;
+                pnlSubInteraksi.Height = 70; // Height for 2 sub-buttons
+                btnMenuInteraksi.Text = "💬 Interaksi              v";
+            }
+            else
+            {
+                pnlSubInteraksi.Visible = false;
+                pnlSubInteraksi.Height = 0;
+                btnMenuInteraksi.Text = "💬 Interaksi              >";
+            }
+            pnlMenu.PerformLayout(); // Force layout refresh for FlowLayoutPanel
+        }
+
+        private void btnSubTestimoni_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is RatingListForm))
+            {
+                RatingListForm ratingList = new RatingListForm();
+                ratingList.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
+        private void btnSubPesan_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is MessageListForm))
+            {
+                MessageListForm messageList = new MessageListForm();
+                messageList.Show();
+                this.ParentForm.Hide();
+            }
         }
 
         private void btnMenuProduk_Click(object sender, EventArgs e)

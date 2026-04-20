@@ -43,6 +43,9 @@ namespace MangsIpulAsli
             this.btnSubKategoriList = new System.Windows.Forms.Button();
             this.btnMenuPesanan = new System.Windows.Forms.Button();
             this.btnMenuInteraksi = new System.Windows.Forms.Button();
+            this.pnlSubInteraksi = new System.Windows.Forms.Panel();
+            this.btnSubTestimoni = new System.Windows.Forms.Button();
+            this.btnSubPesan = new System.Windows.Forms.Button();
             this.btnMenuPencatatan = new System.Windows.Forms.Button();
             this.btnMenuPengaturan = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
@@ -50,6 +53,8 @@ namespace MangsIpulAsli
             this.pnlSidebar.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.pnlSubProduk.SuspendLayout();
+            this.pnlSubKategori.SuspendLayout();
+            this.pnlSubInteraksi.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSidebarLogo)).BeginInit();
             this.SuspendLayout();
@@ -95,6 +100,7 @@ namespace MangsIpulAsli
             this.pnlMenu.Controls.Add(this.pnlSubKategori);
             this.pnlMenu.Controls.Add(this.btnMenuPesanan);
             this.pnlMenu.Controls.Add(this.btnMenuInteraksi);
+            this.pnlMenu.Controls.Add(this.pnlSubInteraksi);
             this.pnlMenu.Controls.Add(this.btnMenuPencatatan);
             this.pnlMenu.Controls.Add(this.btnMenuPengaturan);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -296,6 +302,52 @@ namespace MangsIpulAsli
             this.btnMenuInteraksi.Text = "💬 Interaksi              >";
             this.btnMenuInteraksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenuInteraksi.UseVisualStyleBackColor = true;
+            this.btnMenuInteraksi.Click += new System.EventHandler(this.btnMenuInteraksi_Click);
+            // 
+            // pnlSubInteraksi
+            // 
+            this.pnlSubInteraksi.Controls.Add(this.btnSubPesan);
+            this.pnlSubInteraksi.Controls.Add(this.btnSubTestimoni);
+            this.pnlSubInteraksi.Location = new System.Drawing.Point(0, 205);
+            this.pnlSubInteraksi.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlSubInteraksi.Name = "pnlSubInteraksi";
+            this.pnlSubInteraksi.Size = new System.Drawing.Size(195, 0);
+            this.pnlSubInteraksi.TabIndex = 6;
+            this.pnlSubInteraksi.Visible = false;
+            // 
+            // btnSubTestimoni
+            // 
+            this.btnSubTestimoni.FlatAppearance.BorderSize = 0;
+            this.btnSubTestimoni.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubTestimoni.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubTestimoni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubTestimoni.Location = new System.Drawing.Point(0, 0);
+            this.btnSubTestimoni.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubTestimoni.Name = "btnSubTestimoni";
+            this.btnSubTestimoni.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubTestimoni.Size = new System.Drawing.Size(195, 32);
+            this.btnSubTestimoni.TabIndex = 0;
+            this.btnSubTestimoni.Text = "Testimoni";
+            this.btnSubTestimoni.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubTestimoni.UseVisualStyleBackColor = true;
+            this.btnSubTestimoni.Click += new System.EventHandler(this.btnSubTestimoni_Click);
+            // 
+            // btnSubPesan
+            // 
+            this.btnSubPesan.FlatAppearance.BorderSize = 0;
+            this.btnSubPesan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubPesan.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSubPesan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.btnSubPesan.Location = new System.Drawing.Point(0, 32);
+            this.btnSubPesan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubPesan.Name = "btnSubPesan";
+            this.btnSubPesan.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.btnSubPesan.Size = new System.Drawing.Size(195, 32);
+            this.btnSubPesan.TabIndex = 1;
+            this.btnSubPesan.Text = "Pesan";
+            this.btnSubPesan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubPesan.UseVisualStyleBackColor = true;
+            this.btnSubPesan.Click += new System.EventHandler(this.btnSubPesan_Click);
             // 
             // btnMenuPencatatan
             // 
@@ -384,6 +436,9 @@ namespace MangsIpulAsli
         private System.Windows.Forms.Button btnSubKategoriList;
         private System.Windows.Forms.Button btnMenuPesanan;
         private System.Windows.Forms.Button btnMenuInteraksi;
+        private System.Windows.Forms.Panel pnlSubInteraksi;
+        private System.Windows.Forms.Button btnSubTestimoni;
+        private System.Windows.Forms.Button btnSubPesan;
         private System.Windows.Forms.Button btnMenuPencatatan;
         private System.Windows.Forms.Button btnMenuPengaturan;
         private System.Windows.Forms.Panel pnlLogo;
