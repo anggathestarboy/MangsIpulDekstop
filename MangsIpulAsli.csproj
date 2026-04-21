@@ -216,6 +216,12 @@
     <Compile Include="WalletDetailForm.Designer.cs">
       <DependentUpon>WalletDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoneyTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoneyTypeForm.Designer.cs">
+      <DependentUpon>MoneyTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SidebarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

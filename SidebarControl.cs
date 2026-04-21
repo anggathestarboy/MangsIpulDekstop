@@ -66,6 +66,16 @@ namespace MangsIpulAsli
             pnlMenu.PerformLayout();
         }
 
+        private void btnSubTipeTransaksi_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is MoneyTypeForm))
+            {
+                MoneyTypeForm moneyType = new MoneyTypeForm();
+                moneyType.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
         private void btnSubProfil_Click(object sender, EventArgs e)
         {
             if (this.ParentForm != null && !(this.ParentForm is ProfileForm))

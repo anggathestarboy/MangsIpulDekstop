@@ -411,6 +411,7 @@ namespace MangsIpulAsli
             this.btnSubTipeTransaksi.Text = "Tipe Transaksi";
             this.btnSubTipeTransaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubTipeTransaksi.UseVisualStyleBackColor = true;
+            this.btnSubTipeTransaksi.Click += new System.EventHandler(this.btnSubTipeTransaksi_Click);
             // 
             // btnSubBuatWallet
             // 
