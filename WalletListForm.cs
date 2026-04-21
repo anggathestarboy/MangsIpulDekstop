@@ -77,15 +77,21 @@ namespace MangsIpulAsli
                         {
                             wallets.Clear();
                             cbWallet.Items.Clear();
+                            flpWallets.Controls.Clear();
+                            int index = 0;
                             foreach (var item in walletsArray.EnumerateArray())
                             {
                                 var wallet = new WalletItem
                                 {
                                     Id = item.GetProperty("id").GetInt32(),
-                                    Name = item.GetProperty("name").GetString()
+                                    Name = item.GetProperty("name").GetString(),
+                                    Balance = item.GetProperty("balance").GetDecimal()
                                 };
                                 wallets.Add(wallet);
                                 cbWallet.Items.Add(wallet.Name);
+
+                                // Create card
+                                CreateWalletCard(wallet, index++);
                             }
                         }
                     }
@@ -95,6 +101,63 @@ namespace MangsIpulAsli
             {
                 Console.WriteLine($"Error fetching wallet data: {ex.Message}");
             }
+        }
+
+        private void CreateWalletCard(WalletItem wallet, int index)
+        {
+            Panel card = new Panel();
+            card.Size = new Size(450, 200);
+            card.Margin = new Padding(0, 0, 20, 20);
+            card.BackColor = (index % 2 == 0) ? Color.FromArgb(249, 115, 22) : Color.FromArgb(26, 86, 219); // Orange vs Blue
+            
+            // Apply rounded corners would be nice but let's stick to standard for now or just set Region
+            // For simplicity, standard panel
+
+            Label lblName = new Label();
+            lblName.Text = wallet.Name;
+            lblName.Font = new Font("Segoe UI Bold", 16F, FontStyle.Bold);
+            lblName.ForeColor = Color.White;
+            lblName.AutoSize = true;
+            lblName.Location = new Point(20, 20);
+            card.Controls.Add(lblName);
+
+            Label lblBalance = new Label();
+            lblBalance.Text = "Rp " + wallet.Balance.ToString("N0");
+            lblBalance.Font = new Font("Segoe UI Bold", 18F, FontStyle.Bold);
+            lblBalance.ForeColor = Color.White;
+            lblBalance.AutoSize = true;
+            lblBalance.Location = new Point(20, 60);
+            card.Controls.Add(lblBalance);
+
+            Button btnDetail = new Button();
+            btnDetail.Text = "Detail →";
+            btnDetail.FlatStyle = FlatStyle.Flat;
+            btnDetail.FlatAppearance.BorderSize = 0;
+            btnDetail.BackColor = Color.White;
+            btnDetail.ForeColor = card.BackColor;
+            btnDetail.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnDetail.Size = new Size(100, 40);
+            btnDetail.Location = new Point(20, 130);
+            btnDetail.Cursor = Cursors.Hand;
+            btnDetail.Tag = wallet.Id;
+            btnDetail.Click += (s, e) => {
+                int walletId = (int)((Button)s).Tag;
+                WalletDetailForm detailForm = new WalletDetailForm(walletId);
+                detailForm.Show();
+                this.Hide();
+            };
+            card.Controls.Add(btnDetail);
+
+            // Icon placeholder (using a label with an emoji or symbol)
+            Label lblIcon = new Label();
+            lblIcon.Text = "💳";
+            lblIcon.Font = new Font("Segoe UI", 40F);
+            lblIcon.ForeColor = Color.FromArgb(100, 255, 255, 255); // Semi-transparent white
+            lblIcon.AutoSize = true;
+            lblIcon.Location = new Point(350, 80);
+            card.Controls.Add(lblIcon);
+
+            flpWallets.Controls.Add(card);
         }
 
         private async void FetchMoneyTypes()
@@ -291,6 +354,7 @@ namespace MangsIpulAsli
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public decimal Balance { get; set; }
     }
 
     public class MoneyTypeItem

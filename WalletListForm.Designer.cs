@@ -19,6 +19,7 @@ namespace MangsIpulAsli
             this.navbarControl1 = new MangsIpulAsli.NavbarControl();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.flpWallets = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTransactionCard = new System.Windows.Forms.Panel();
             this.lblWajibHint = new System.Windows.Forms.Label();
             this.btnSimpanTransaksi = new System.Windows.Forms.Button();
@@ -83,13 +84,22 @@ namespace MangsIpulAsli
             // 
             // pnlContent
             // 
+            this.pnlContent.Controls.Add(this.flpWallets);
             this.pnlContent.Controls.Add(this.pnlTransactionCard);
             this.pnlContent.Controls.Add(this.pnlChartCard);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContent.Location = new System.Drawing.Point(30, 110);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(945, 1100);
+            this.pnlContent.Size = new System.Drawing.Size(945, 1800);
             this.pnlContent.TabIndex = 1;
+            // 
+            // flpWallets
+            // 
+            this.flpWallets.AutoScroll = true;
+            this.flpWallets.Location = new System.Drawing.Point(0, 1050);
+            this.flpWallets.Name = "flpWallets";
+            this.flpWallets.Size = new System.Drawing.Size(945, 700);
+            this.flpWallets.TabIndex = 3;
             // 
             // pnlTransactionCard
             // 
@@ -421,5 +431,6 @@ namespace MangsIpulAsli
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSimpanTransaksi;
         private System.Windows.Forms.Label lblWajibHint;
+        private System.Windows.Forms.FlowLayoutPanel flpWallets;
     }
 }
