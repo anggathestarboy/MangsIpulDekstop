@@ -427,6 +427,7 @@ namespace MangsIpulAsli
             this.btnSubBuatWallet.Text = "Buat Wallet Baru";
             this.btnSubBuatWallet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubBuatWallet.UseVisualStyleBackColor = true;
+            this.btnSubBuatWallet.Click += new System.EventHandler(this.btnSubBuatWallet_Click);
             // 
             // btnSubListWallets
             // 
@@ -443,6 +444,7 @@ namespace MangsIpulAsli
             this.btnSubListWallets.Text = "List Wallets";
             this.btnSubListWallets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubListWallets.UseVisualStyleBackColor = true;
+            this.btnSubListWallets.Click += new System.EventHandler(this.btnSubListWallets_Click);
             // 
             // btnMenuPengaturan
             // 

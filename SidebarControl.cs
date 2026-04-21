@@ -211,6 +211,26 @@ namespace MangsIpulAsli
 
    
 
+        private void btnSubListWallets_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is WalletListForm))
+            {
+                WalletListForm walletList = new WalletListForm();
+                walletList.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
+        private void btnSubBuatWallet_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is CreateWalletForm))
+            {
+                CreateWalletForm createWallet = new CreateWalletForm();
+                createWallet.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
         private void btnMenuPesanan_Click(object sender, EventArgs e)
         {
             if (this.ParentForm != null && !(this.ParentForm is TransactionListForm))
