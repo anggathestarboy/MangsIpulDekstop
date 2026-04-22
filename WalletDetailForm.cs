@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +30,76 @@ namespace MangsIpulAsli
             // Customize DataGridView behavior
             dgvTransactions.CellFormatting += DgvTransactions_CellFormatting;
 
+            // Edit Wallet Name on double click
+            lblWalletName.DoubleClick += LblWalletName_DoubleClick;
+            lblWalletName.Cursor = Cursors.Hand;
+
             FetchWalletDetail();
+        }
+
+        private async void LblWalletName_DoubleClick(object sender, EventArgs e)
+        {
+            InputDialog dialog = new InputDialog("Ubah Nama Wallet", "Masukkan nama wallet baru:", lblWalletName.Text);
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string newName = dialog.InputText.Trim();
+                if (!string.IsNullOrEmpty(newName))
+                {
+                    await UpdateWalletName(newName);
+                }
+            }
+        }
+
+        private async Task UpdateWalletName(string newName)
+        {
+            try
+            {
+                string token = TokenManager.LoadToken();
+                if (string.IsNullOrEmpty(token))
+                {
+                    MessageBox.Show("Sesi Anda telah berakhir. Silakan login kembali.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var requestData = new { name = newName };
+                string json = JsonSerializer.Serialize(requestData);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                string url = $"{_baseUrl}/{_walletId}";
+                var response = await client.PutAsync(url, content);
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    lblWalletName.Text = newName;
+                    MessageBox.Show("Nama wallet berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string responseJson = await response.Content.ReadAsStringAsync();
+                    string errorMessage = "Gagal memperbarui nama wallet.";
+                    
+                    try
+                    {
+                        using (JsonDocument doc = JsonDocument.Parse(responseJson))
+                        {
+                            if (doc.RootElement.TryGetProperty("message", out var msgProp))
+                            {
+                                errorMessage = msgProp.GetString();
+                            }
+                        }
+                    }
+                    catch { }
+
+                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadUserInfo()
