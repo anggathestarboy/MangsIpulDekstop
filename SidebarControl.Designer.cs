@@ -395,6 +395,7 @@ namespace MangsIpulAsli
             this.btnSubRiwayatWallet.Text = "Riwayat Wallet";
             this.btnSubRiwayatWallet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubRiwayatWallet.UseVisualStyleBackColor = true;
+            this.btnSubRiwayatWallet.Click += new System.EventHandler(this.btnSubRiwayatWallet_Click);
             // 
             // btnSubTipeTransaksi
             // 

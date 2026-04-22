@@ -231,6 +231,16 @@ namespace MangsIpulAsli
             }
         }
 
+        private void btnSubRiwayatWallet_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null && !(this.ParentForm is WalletHistoryForm))
+            {
+                WalletHistoryForm historyForm = new WalletHistoryForm();
+                historyForm.Show();
+                this.ParentForm.Hide();
+            }
+        }
+
         private void btnSubBuatWallet_Click(object sender, EventArgs e)
         {
             if (this.ParentForm != null && !(this.ParentForm is CreateWalletForm))

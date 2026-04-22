@@ -216,6 +216,12 @@
     <Compile Include="WalletDetailForm.Designer.cs">
       <DependentUpon>WalletDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WalletHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WalletHistoryForm.Designer.cs">
+      <DependentUpon>WalletHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoneyTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </Compile>
     <EmbeddedResource Include="WalletDetailForm.resx">
       <DependentUpon>WalletDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WalletHistoryForm.resx">
+      <DependentUpon>WalletHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WalletListForm.resx">
       <DependentUpon>WalletListForm.cs</DependentUpon>

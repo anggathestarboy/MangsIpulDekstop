@@ -177,4 +177,79 @@ namespace MangsIpulAsli.Models
         [JsonPropertyName("product")]
         public Product Product { get; set; }
     }
+
+    public class WalletMoneyResponse
+    {
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
+
+        [JsonPropertyName("wallet_money")]
+        public List<WalletMoney> WalletMoney { get; set; }
+    }
+
+    public class WalletMoney
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("money_type_id")]
+        public int MoneyTypeId { get; set; }
+
+        [JsonPropertyName("wallet_id")]
+        public int WalletId { get; set; }
+
+        [JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        [JsonPropertyName("amount")]
+        public decimal Amount { get; set; }
+
+        [JsonPropertyName("date")]
+        public string Date { get; set; }
+
+        [JsonPropertyName("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonPropertyName("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+
+        [JsonPropertyName("wallet")]
+        public Wallet Wallet { get; set; }
+
+        [JsonPropertyName("money_type")]
+        public MoneyType MoneyType { get; set; }
+    }
+
+    public class Wallet
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("user_id")]
+        public int UserId { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("balance")]
+        public decimal Balance { get; set; }
+
+        [JsonPropertyName("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonPropertyName("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+    }
+
+    public class MoneyType
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("type")]
+        public string Type { get; set; } // income / expense
+    }
 }
