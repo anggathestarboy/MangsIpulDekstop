@@ -60,9 +60,7 @@ namespace MangsIpulAsli
                                 int rowIndex = dgvMoneyTypes.Rows.Add(
                                     no++,
                                     name,
-                                    type == "income" ? "Pemasukan" : "Pengeluaran",
-                                    "Edit",
-                                    "Hapus"
+                                    type == "income" ? "Pemasukan" : "Pengeluaran"
                                 );
 
                                 dgvMoneyTypes.Rows[rowIndex].Tag = new { Id = id, Name = name, Type = type };

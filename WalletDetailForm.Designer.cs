@@ -15,8 +15,8 @@ namespace MangsIpulAsli
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sidebarControl1 = new MangsIpulAsli.SidebarControl();
             this.navbarControl1 = new MangsIpulAsli.NavbarControl();
             this.pnlMain = new System.Windows.Forms.Panel();
@@ -140,7 +140,7 @@ namespace MangsIpulAsli
             this.lblNetSummary.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.lblNetSummary.Location = new System.Drawing.Point(900, 15);
             this.lblNetSummary.Name = "lblNetSummary";
-            this.lblNetSummary.Size = new System.Drawing.Size(76, 19);
+            this.lblNetSummary.Size = new System.Drawing.Size(68, 19);
             this.lblNetSummary.TabIndex = 2;
             this.lblNetSummary.Text = "Net: Rp 0";
             // 
@@ -152,7 +152,7 @@ namespace MangsIpulAsli
             this.lblExpenseSummary.ForeColor = System.Drawing.Color.Red;
             this.lblExpenseSummary.Location = new System.Drawing.Point(700, 15);
             this.lblExpenseSummary.Name = "lblExpenseSummary";
-            this.lblExpenseSummary.Size = new System.Drawing.Size(142, 19);
+            this.lblExpenseSummary.Size = new System.Drawing.Size(130, 19);
             this.lblExpenseSummary.TabIndex = 1;
             this.lblExpenseSummary.Text = "Total Expense: Rp 0";
             // 
@@ -164,7 +164,7 @@ namespace MangsIpulAsli
             this.lblIncomeSummary.ForeColor = System.Drawing.Color.Green;
             this.lblIncomeSummary.Location = new System.Drawing.Point(520, 15);
             this.lblIncomeSummary.Name = "lblIncomeSummary";
-            this.lblIncomeSummary.Size = new System.Drawing.Size(135, 19);
+            this.lblIncomeSummary.Size = new System.Drawing.Size(126, 19);
             this.lblIncomeSummary.TabIndex = 0;
             this.lblIncomeSummary.Text = "Total Income: Rp 0";
             // 
@@ -177,28 +177,28 @@ namespace MangsIpulAsli
             this.dgvTransactions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTransactions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvTransactions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTransactions.ColumnHeadersHeight = 40;
             this.dgvTransactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDate,
             this.colType,
             this.colName,
             this.colAmount});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTransactions.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransactions.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTransactions.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvTransactions.EnableHeadersVisualStyles = false;
             this.dgvTransactions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
@@ -247,10 +247,10 @@ namespace MangsIpulAsli
             // lblHistoryTitle
             // 
             this.lblHistoryTitle.AutoSize = true;
-            this.lblHistoryTitle.Font = new System.Drawing.Font("Segoe UI Bold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblHistoryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblHistoryTitle.Location = new System.Drawing.Point(20, 20);
             this.lblHistoryTitle.Name = "lblHistoryTitle";
-            this.lblHistoryTitle.Size = new System.Drawing.Size(147, 21);
+            this.lblHistoryTitle.Size = new System.Drawing.Size(154, 20);
             this.lblHistoryTitle.TabIndex = 0;
             this.lblHistoryTitle.Text = "Riwayat Transaksi";
             // 
@@ -301,7 +301,7 @@ namespace MangsIpulAsli
             this.lblSampaiTanggal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblSampaiTanggal.Location = new System.Drawing.Point(450, 45);
             this.lblSampaiTanggal.Name = "lblSampaiTanggal";
-            this.lblSampaiTanggal.Size = new System.Drawing.Size(91, 15);
+            this.lblSampaiTanggal.Size = new System.Drawing.Size(90, 15);
             this.lblSampaiTanggal.TabIndex = 3;
             this.lblSampaiTanggal.Text = "Sampai Tanggal";
             // 
@@ -322,17 +322,17 @@ namespace MangsIpulAsli
             this.lblDariTanggal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblDariTanggal.Location = new System.Drawing.Point(20, 45);
             this.lblDariTanggal.Name = "lblDariTanggal";
-            this.lblDariTanggal.Size = new System.Drawing.Size(73, 15);
+            this.lblDariTanggal.Size = new System.Drawing.Size(72, 15);
             this.lblDariTanggal.TabIndex = 1;
             this.lblDariTanggal.Text = "Dari Tanggal";
             // 
             // lblFilterTitle
             // 
             this.lblFilterTitle.AutoSize = true;
-            this.lblFilterTitle.Font = new System.Drawing.Font("Segoe UI Bold", 11F, System.Drawing.FontStyle.Bold);
+            this.lblFilterTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.lblFilterTitle.Location = new System.Drawing.Point(15, 15);
             this.lblFilterTitle.Name = "lblFilterTitle";
-            this.lblFilterTitle.Size = new System.Drawing.Size(107, 20);
+            this.lblFilterTitle.Size = new System.Drawing.Size(110, 18);
             this.lblFilterTitle.TabIndex = 0;
             this.lblFilterTitle.Text = "Filter Tanggal";
             // 
@@ -364,10 +364,10 @@ namespace MangsIpulAsli
             // lblMoneyOut
             // 
             this.lblMoneyOut.AutoSize = true;
-            this.lblMoneyOut.Font = new System.Drawing.Font("Segoe UI Bold", 16F, System.Drawing.FontStyle.Bold);
+            this.lblMoneyOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
             this.lblMoneyOut.Location = new System.Drawing.Point(15, 35);
             this.lblMoneyOut.Name = "lblMoneyOut";
-            this.lblMoneyOut.Size = new System.Drawing.Size(58, 30);
+            this.lblMoneyOut.Size = new System.Drawing.Size(62, 26);
             this.lblMoneyOut.TabIndex = 1;
             this.lblMoneyOut.Text = "Rp 0";
             // 
@@ -378,7 +378,7 @@ namespace MangsIpulAsli
             this.lblOutLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblOutLabel.Location = new System.Drawing.Point(15, 15);
             this.lblOutLabel.Name = "lblOutLabel";
-            this.lblOutLabel.Size = new System.Drawing.Size(161, 15);
+            this.lblOutLabel.Size = new System.Drawing.Size(172, 15);
             this.lblOutLabel.TabIndex = 0;
             this.lblOutLabel.Text = "Uang Keluar(Berdasarkan Filter)";
             // 
@@ -395,10 +395,10 @@ namespace MangsIpulAsli
             // lblMoneyIn
             // 
             this.lblMoneyIn.AutoSize = true;
-            this.lblMoneyIn.Font = new System.Drawing.Font("Segoe UI Bold", 16F, System.Drawing.FontStyle.Bold);
+            this.lblMoneyIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
             this.lblMoneyIn.Location = new System.Drawing.Point(15, 35);
             this.lblMoneyIn.Name = "lblMoneyIn";
-            this.lblMoneyIn.Size = new System.Drawing.Size(58, 30);
+            this.lblMoneyIn.Size = new System.Drawing.Size(62, 26);
             this.lblMoneyIn.TabIndex = 1;
             this.lblMoneyIn.Text = "Rp 0";
             // 
@@ -409,21 +409,21 @@ namespace MangsIpulAsli
             this.lblInLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblInLabel.Location = new System.Drawing.Point(15, 15);
             this.lblInLabel.Name = "lblInLabel";
-            this.lblInLabel.Size = new System.Drawing.Size(161, 15);
+            this.lblInLabel.Size = new System.Drawing.Size(174, 15);
             this.lblInLabel.TabIndex = 0;
             this.lblInLabel.Text = "Uang Masuk(Berdasarkan Filter)";
             // 
             // lblDifference
             // 
             this.lblDifference.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDifference.Font = new System.Drawing.Font("Segoe UI Bold", 14F, System.Drawing.FontStyle.Bold);
+            this.lblDifference.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.lblDifference.ForeColor = System.Drawing.Color.White;
             this.lblDifference.Location = new System.Drawing.Point(850, 45);
             this.lblDifference.Name = "lblDifference";
             this.lblDifference.Size = new System.Drawing.Size(205, 25);
             this.lblDifference.TabIndex = 4;
             this.lblDifference.Text = "Rp 0";
-            this.lblDifference.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDifference.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDifferenceTitle
             // 
@@ -433,7 +433,7 @@ namespace MangsIpulAsli
             this.lblDifferenceTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.lblDifferenceTitle.Location = new System.Drawing.Point(850, 25);
             this.lblDifferenceTitle.Name = "lblDifferenceTitle";
-            this.lblDifferenceTitle.Size = new System.Drawing.Size(139, 15);
+            this.lblDifferenceTitle.Size = new System.Drawing.Size(142, 15);
             this.lblDifferenceTitle.TabIndex = 3;
             this.lblDifferenceTitle.Text = "Selisih(Berdasarkan Filter)";
             this.lblDifferenceTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -441,14 +441,15 @@ namespace MangsIpulAsli
             // lblBalance
             // 
             this.lblBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBalance.Font = new System.Drawing.Font("Segoe UI Bold", 14F, System.Drawing.FontStyle.Bold);
+            this.lblBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.lblBalance.ForeColor = System.Drawing.Color.White;
             this.lblBalance.Location = new System.Drawing.Point(620, 45);
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(205, 25);
             this.lblBalance.TabIndex = 2;
             this.lblBalance.Text = "Rp 0";
-            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblBalance.Click += new System.EventHandler(this.lblBalance_Click);
             // 
             // lblBalanceTitle
             // 
@@ -458,7 +459,7 @@ namespace MangsIpulAsli
             this.lblBalanceTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.lblBalanceTitle.Location = new System.Drawing.Point(620, 25);
             this.lblBalanceTitle.Name = "lblBalanceTitle";
-            this.lblBalanceTitle.Size = new System.Drawing.Size(65, 15);
+            this.lblBalanceTitle.Size = new System.Drawing.Size(66, 15);
             this.lblBalanceTitle.TabIndex = 1;
             this.lblBalanceTitle.Text = "Total Saldo";
             this.lblBalanceTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -466,11 +467,11 @@ namespace MangsIpulAsli
             // lblWalletName
             // 
             this.lblWalletName.AutoSize = true;
-            this.lblWalletName.Font = new System.Drawing.Font("Segoe UI Bold", 18F, System.Drawing.FontStyle.Bold);
+            this.lblWalletName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.lblWalletName.ForeColor = System.Drawing.Color.White;
             this.lblWalletName.Location = new System.Drawing.Point(20, 30);
             this.lblWalletName.Name = "lblWalletName";
-            this.lblWalletName.Size = new System.Drawing.Size(163, 32);
+            this.lblWalletName.Size = new System.Drawing.Size(167, 29);
             this.lblWalletName.TabIndex = 0;
             this.lblWalletName.Text = "Wallet Utama";
             // 
@@ -492,7 +493,7 @@ namespace MangsIpulAsli
             this.lblHeaderSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblHeaderSubtitle.Location = new System.Drawing.Point(45, 45);
             this.lblHeaderSubtitle.Name = "lblHeaderSubtitle";
-            this.lblHeaderSubtitle.Size = new System.Drawing.Size(222, 15);
+            this.lblHeaderSubtitle.Size = new System.Drawing.Size(249, 15);
             this.lblHeaderSubtitle.TabIndex = 2;
             this.lblHeaderSubtitle.Text = "Informasi lengkap dan riwayat transaksi wallet";
             // 
@@ -512,10 +513,10 @@ namespace MangsIpulAsli
             // lblHeaderTitle
             // 
             this.lblHeaderTitle.AutoSize = true;
-            this.lblHeaderTitle.Font = new System.Drawing.Font("Segoe UI Bold", 20F, System.Drawing.FontStyle.Bold);
+            this.lblHeaderTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
             this.lblHeaderTitle.Location = new System.Drawing.Point(40, 5);
             this.lblHeaderTitle.Name = "lblHeaderTitle";
-            this.lblHeaderTitle.Size = new System.Drawing.Size(182, 37);
+            this.lblHeaderTitle.Size = new System.Drawing.Size(179, 31);
             this.lblHeaderTitle.TabIndex = 0;
             this.lblHeaderTitle.Text = "Detail Wallet";
             // 

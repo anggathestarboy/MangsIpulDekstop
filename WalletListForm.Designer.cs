@@ -90,7 +90,7 @@ namespace MangsIpulAsli
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContent.Location = new System.Drawing.Point(30, 110);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(945, 1800);
+            this.pnlContent.Size = new System.Drawing.Size(928, 1800);
             this.pnlContent.TabIndex = 1;
             // 
             // flpWallets
@@ -131,7 +131,7 @@ namespace MangsIpulAsli
             this.lblWajibHint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblWajibHint.Location = new System.Drawing.Point(300, 410);
             this.lblWajibHint.Name = "lblWajibHint";
-            this.lblWajibHint.Size = new System.Drawing.Size(359, 13);
+            this.lblWajibHint.Size = new System.Drawing.Size(426, 13);
             this.lblWajibHint.TabIndex = 13;
             this.lblWajibHint.Text = "* Semua field wajib diisi kecuali tanggal (akan menggunakan hari ini jika kosong)" +
     "";
@@ -219,7 +219,7 @@ namespace MangsIpulAsli
             this.lblJumlah.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
             this.lblJumlah.Location = new System.Drawing.Point(25, 260);
             this.lblJumlah.Name = "lblJumlah";
-            this.lblJumlah.Size = new System.Drawing.Size(53, 19);
+            this.lblJumlah.Size = new System.Drawing.Size(54, 19);
             this.lblJumlah.TabIndex = 5;
             this.lblJumlah.Text = "Jumlah";
             // 
@@ -240,7 +240,7 @@ namespace MangsIpulAsli
             this.lblTipeTransaksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
             this.lblTipeTransaksi.Location = new System.Drawing.Point(25, 185);
             this.lblTipeTransaksi.Name = "lblTipeTransaksi";
-            this.lblTipeTransaksi.Size = new System.Drawing.Size(95, 19);
+            this.lblTipeTransaksi.Size = new System.Drawing.Size(97, 19);
             this.lblTipeTransaksi.TabIndex = 3;
             this.lblTipeTransaksi.Text = "Tipe Transaksi";
             // 
@@ -261,7 +261,7 @@ namespace MangsIpulAsli
             this.lblPilihWallet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
             this.lblPilihWallet.Location = new System.Drawing.Point(25, 110);
             this.lblPilihWallet.Name = "lblPilihWallet";
-            this.lblPilihWallet.Size = new System.Drawing.Size(78, 19);
+            this.lblPilihWallet.Size = new System.Drawing.Size(81, 19);
             this.lblPilihWallet.TabIndex = 1;
             this.lblPilihWallet.Text = "Pilih Wallet";
             // 
@@ -283,18 +283,18 @@ namespace MangsIpulAsli
             this.lblTransSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.lblTransSubtitle.Location = new System.Drawing.Point(25, 50);
             this.lblTransSubtitle.Name = "lblTransSubtitle";
-            this.lblTransSubtitle.Size = new System.Drawing.Size(229, 17);
+            this.lblTransSubtitle.Size = new System.Drawing.Size(248, 17);
             this.lblTransSubtitle.TabIndex = 1;
             this.lblTransSubtitle.Text = "Catat pemasukan atau pengeluaran Anda";
             // 
             // lblTransTitle
             // 
             this.lblTransTitle.AutoSize = true;
-            this.lblTransTitle.Font = new System.Drawing.Font("Segoe UI Bold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTransTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblTransTitle.ForeColor = System.Drawing.Color.White;
             this.lblTransTitle.Location = new System.Drawing.Point(25, 20);
             this.lblTransTitle.Name = "lblTransTitle";
-            this.lblTransTitle.Size = new System.Drawing.Size(175, 21);
+            this.lblTransTitle.Size = new System.Drawing.Size(198, 20);
             this.lblTransTitle.TabIndex = 0;
             this.lblTransTitle.Text = "Tambah Transaksi Baru";
             // 
@@ -314,9 +314,9 @@ namespace MangsIpulAsli
             // 
             this.pnlChart.BackColor = System.Drawing.Color.White;
             this.pnlChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChart.Location = new System.Drawing.Point(20, 55);
+            this.pnlChart.Location = new System.Drawing.Point(20, 56);
             this.pnlChart.Name = "pnlChart";
-            this.pnlChart.Size = new System.Drawing.Size(905, 435);
+            this.pnlChart.Size = new System.Drawing.Size(905, 434);
             this.pnlChart.TabIndex = 2;
             this.pnlChart.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlChart_Paint);
             // 
@@ -341,7 +341,7 @@ namespace MangsIpulAsli
             this.lblChartTitle.Location = new System.Drawing.Point(20, 20);
             this.lblChartTitle.Name = "lblChartTitle";
             this.lblChartTitle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 15);
-            this.lblChartTitle.Size = new System.Drawing.Size(232, 36);
+            this.lblChartTitle.Size = new System.Drawing.Size(235, 36);
             this.lblChartTitle.TabIndex = 0;
             this.lblChartTitle.Text = "Ringkasan pemasukan tahun ini";
             // 
@@ -352,7 +352,7 @@ namespace MangsIpulAsli
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(30, 30);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(945, 80);
+            this.pnlHeader.Size = new System.Drawing.Size(928, 80);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblSubtitle
@@ -362,18 +362,18 @@ namespace MangsIpulAsli
             this.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lblSubtitle.Location = new System.Drawing.Point(5, 45);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(287, 19);
+            this.lblSubtitle.Size = new System.Drawing.Size(305, 19);
             this.lblSubtitle.TabIndex = 1;
             this.lblSubtitle.Text = "Ringkasan keuntungan dan dompet digital Anda";
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Bold", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(24)))), ((int)(((byte)(39)))));
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(325, 45);
+            this.lblTitle.Size = new System.Drawing.Size(348, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Dashboard Keuangan";
             // 

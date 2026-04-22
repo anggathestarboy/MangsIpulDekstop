@@ -26,8 +26,8 @@ namespace MangsIpulAsli
             this.colNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEdit = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.colHapus = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colHapus = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlListHeader = new System.Windows.Forms.Panel();
             this.lblTotalTipe = new System.Windows.Forms.Label();
             this.lblListTitle = new System.Windows.Forms.Label();
@@ -171,17 +171,33 @@ namespace MangsIpulAsli
             // 
             // colEdit
             // 
+            this.colEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colEdit.HeaderText = "AKSI";
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
-            this.colEdit.Text = "Edit";
+            this.colEdit.Text = "📝";
+            this.colEdit.UseColumnTextForButtonValue = true;
+            this.colEdit.Width = 60;
+            this.colEdit.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.colEdit.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.colEdit.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.colEdit.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
+            this.colEdit.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             // 
             // colHapus
             // 
+            this.colHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colHapus.HeaderText = "";
             this.colHapus.Name = "colHapus";
             this.colHapus.ReadOnly = true;
-            this.colHapus.Text = "Hapus";
+            this.colHapus.Text = "🗑️";
+            this.colHapus.UseColumnTextForButtonValue = true;
+            this.colHapus.Width = 60;
+            this.colHapus.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.colHapus.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.colHapus.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
+            this.colHapus.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.colHapus.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             // 
             // pnlListHeader
             // 
@@ -410,7 +426,7 @@ namespace MangsIpulAsli
         private System.Windows.Forms.DataGridViewTextBoxColumn colNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNama;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKategori;
-        private System.Windows.Forms.DataGridViewLinkColumn colEdit;
-        private System.Windows.Forms.DataGridViewLinkColumn colHapus;
+        private System.Windows.Forms.DataGridViewButtonColumn colEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn colHapus;
     }
 }

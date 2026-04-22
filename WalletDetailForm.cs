@@ -162,5 +162,10 @@ namespace MangsIpulAsli
             listForm.Show();
             this.Hide();
         }
+
+        private void lblBalance_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -154,6 +154,8 @@ namespace MangsIpulAsli
             this.colUpdate.HeaderText = "AKSI";
             this.colUpdate.Name = "colUpdate";
             this.colUpdate.ReadOnly = true;
+            this.colUpdate.Text = "📝";
+            this.colUpdate.UseColumnTextForButtonValue = true;
             this.colUpdate.Width = 60;
             this.colUpdate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.colUpdate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235))))); // Blue Icon
@@ -167,6 +169,8 @@ namespace MangsIpulAsli
             this.colDelete.HeaderText = "";
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
+            this.colDelete.Text = "🗑️";
+            this.colDelete.UseColumnTextForButtonValue = true;
             this.colDelete.Width = 60;
             this.colDelete.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.colDelete.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38))))); // Red Icon
