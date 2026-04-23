@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllActivityDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllActivityDialog.Designer.cs">
+      <DependentUpon>AllActivityDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoryListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Models\ProductModels.cs" />
+    <Compile Include="Models\DashboardModels.cs" />
     <Compile Include="Models\MessageModels.cs" />
     <Compile Include="Models\RatingModels.cs" />
     <Compile Include="Models\TransactionModels.cs" />
