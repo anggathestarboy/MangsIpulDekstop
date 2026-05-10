@@ -114,7 +114,7 @@ namespace MangsIpulAsli
                 string json = JsonSerializer.Serialize(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                string url = $"{BaseUrl}api/transaction/{_transaction.Id}/approve";
+                string url = $"{BaseUrl}api/transactions/{_transaction.Id}/approve";
                 var response = await client.PostAsync(url, content);
 
                 if (response.IsSuccessStatusCode)
@@ -146,7 +146,7 @@ namespace MangsIpulAsli
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-                string url = $"{BaseUrl}api/transaction/{_transaction.Id}/reject";
+                string url = $"{BaseUrl}api/transactions/{_transaction.Id}/reject";
                 var response = await client.PostAsync(url, null);
 
                 if (response.IsSuccessStatusCode)
