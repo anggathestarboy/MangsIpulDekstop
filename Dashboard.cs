@@ -1,3 +1,4 @@
+using MangsIpulAsli.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,9 +7,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MangsIpulAsli.Models;
+
 
 namespace MangsIpulAsli
 {
@@ -45,6 +47,23 @@ namespace MangsIpulAsli
                 FetchWalletsTask()
             );
         }
+
+      
+
+public class DashboardStats
+    {
+        [JsonPropertyName("total_sales")]
+        public string TotalSales { get; set; }
+
+        [JsonPropertyName("total_orders")]
+        public int TotalOrders { get; set; }
+
+        [JsonPropertyName("total_products")]
+        public int TotalProducts { get; set; }
+
+        [JsonPropertyName("total_customers")]
+        public int TotalCustomers { get; set; }
+}
 
         private async Task FetchDashboardStatsTask()
         {
@@ -314,13 +333,16 @@ namespace MangsIpulAsli
                 {
                     string json = await response.Content.ReadAsStringAsync();
                     var stats = JsonSerializer.Deserialize<DashboardStats>(json);
-                    
+
                     if (stats != null)
                     {
-                        lblStatValue1.Text = $"Rp {stats.TotalSalesValue:N0}";
-                        lblStatValue2.Text = stats.total_orders.ToString();
-                        lblStatValue3.Text = stats.total_products.ToString();
-                        lblStatValue4.Text = stats.total_customers.ToString();
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            lblStatValue1.Text = $"Rp {int.Parse(stats.TotalSales):N0}";
+                            lblStatValue2.Text = stats.TotalOrders.ToString();
+                            lblStatValue3.Text = stats.TotalProducts.ToString();
+                            lblStatValue4.Text = stats.TotalCustomers.ToString();
+                        });
                     }
                 }
             }
