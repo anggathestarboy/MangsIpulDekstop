@@ -18,6 +18,7 @@ namespace MangsIpulAsli
         private const string ApiUrl = "https://mangsipul.alwaysdata.net/api/wallets";
         private const string MoneyTypesUrl = "https://mangsipul.alwaysdata.net/api/money-types";
         private const string WalletMoneyUrl = "https://mangsipul.alwaysdata.net/api/wallet-money";
+        private const string TransferUrl = "https://mangsipul.alwaysdata.net/api/wallets/transfer";
         private List<MonthlyProfit> monthlyProfits = new List<MonthlyProfit>();
         private List<WalletItem> wallets = new List<WalletItem>();
         private List<MoneyTypeItem> moneyTypes = new List<MoneyTypeItem>();
@@ -77,6 +78,8 @@ namespace MangsIpulAsli
                         {
                             wallets.Clear();
                             cbWallet.Items.Clear();
+                            cbWalletAsal.Items.Clear();
+                            cbWalletTujuan.Items.Clear();
                             flpWallets.Controls.Clear();
                             int index = 0;
                             foreach (var item in walletsArray.EnumerateArray())
@@ -89,6 +92,8 @@ namespace MangsIpulAsli
                                 };
                                 wallets.Add(wallet);
                                 cbWallet.Items.Add(wallet.Name);
+                                cbWalletAsal.Items.Add(wallet.Name);
+                                cbWalletTujuan.Items.Add(wallet.Name);
 
                                 // Create card
                                 CreateWalletCard(wallet, index++);
@@ -273,6 +278,84 @@ namespace MangsIpulAsli
             txtJumlah.Text = "";
             txtDeskripsi.Text = "";
             dtpTanggal.Value = DateTime.Now;
+        }
+
+        private void btnResetTransfer_Click(object sender, EventArgs e)
+        {
+            cbWalletAsal.SelectedIndex = -1;
+            cbWalletTujuan.SelectedIndex = -1;
+            txtJumlahTransfer.Text = "";
+        }
+
+        private async void btnKirimTransfer_Click(object sender, EventArgs e)
+        {
+            if (cbWalletAsal.SelectedIndex == -1 || cbWalletTujuan.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtJumlahTransfer.Text))
+            {
+                MessageBox.Show("Harap isi semua field yang wajib!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cbWalletAsal.SelectedIndex == cbWalletTujuan.SelectedIndex)
+            {
+                MessageBox.Show("Wallet asal dan tujuan tidak boleh sama!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!decimal.TryParse(txtJumlahTransfer.Text, out decimal amount))
+            {
+                MessageBox.Show("Jumlah harus berupa angka!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            btnKirimTransfer.Enabled = false;
+            btnKirimTransfer.Text = "Mengirim...";
+
+            try
+            {
+                int fromId = wallets[cbWalletAsal.SelectedIndex].Id;
+                int toId = wallets[cbWalletTujuan.SelectedIndex].Id;
+
+                var requestData = new
+                {
+                    from_wallet_id = fromId,
+                    to_wallet_id = toId,
+                    amount = (int)amount
+                };
+
+                string json = JsonSerializer.Serialize(requestData);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                string token = TokenManager.LoadToken();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await client.PostAsync(TransferUrl, content);
+                string responseJson = await response.Content.ReadAsStringAsync();
+
+                using (JsonDocument doc = JsonDocument.Parse(responseJson))
+                {
+                    string message = doc.RootElement.TryGetProperty("message", out var msgProp) ? msgProp.GetString() : "Gagal melakukan transfer.";
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show(message, "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnResetTransfer_Click(null, null);
+                        FetchWalletData(); // Refresh wallet data and chart
+                    }
+                    else
+                    {
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnKirimTransfer.Enabled = true;
+                btnKirimTransfer.Text = "Kirim Transfer";
+            }
         }
 
         private void pnlChart_Paint(object sender, PaintEventArgs e)

@@ -20,6 +20,21 @@ namespace MangsIpulAsli
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.flpWallets = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlTransferCard = new System.Windows.Forms.Panel();
+            this.lblTransferHint = new System.Windows.Forms.Label();
+            this.btnKirimTransfer = new System.Windows.Forms.Button();
+            this.btnResetTransfer = new System.Windows.Forms.Button();
+            this.txtJumlahTransfer = new System.Windows.Forms.TextBox();
+            this.lblJumlahTransfer = new System.Windows.Forms.Label();
+            this.cbWalletTujuan = new System.Windows.Forms.ComboBox();
+            this.lblWalletTujuan = new System.Windows.Forms.Label();
+            this.cbWalletAsal = new System.Windows.Forms.ComboBox();
+            this.lblWalletAsal = new System.Windows.Forms.Label();
+            this.pnlTransferHeader = new System.Windows.Forms.Panel();
+            this.lblTransferSubtitle = new System.Windows.Forms.Label();
+            this.lblTransferTitle = new System.Windows.Forms.Label();
+            this.lblTransferIcon = new System.Windows.Forms.Label();
+            this.lblTransferChevron = new System.Windows.Forms.Label();
             this.pnlTransactionCard = new System.Windows.Forms.Panel();
             this.lblWajibHint = new System.Windows.Forms.Label();
             this.btnSimpanTransaksi = new System.Windows.Forms.Button();
@@ -46,6 +61,8 @@ namespace MangsIpulAsli
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             this.pnlContent.SuspendLayout();
+            this.pnlTransferCard.SuspendLayout();
+            this.pnlTransferHeader.SuspendLayout();
             this.pnlTransactionCard.SuspendLayout();
             this.pnlTransHeader.SuspendLayout();
             this.pnlChartCard.SuspendLayout();
@@ -85,21 +102,200 @@ namespace MangsIpulAsli
             // pnlContent
             // 
             this.pnlContent.Controls.Add(this.flpWallets);
+            this.pnlContent.Controls.Add(this.pnlTransferCard);
             this.pnlContent.Controls.Add(this.pnlTransactionCard);
             this.pnlContent.Controls.Add(this.pnlChartCard);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContent.Location = new System.Drawing.Point(30, 110);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(928, 1800);
+            this.pnlContent.Size = new System.Drawing.Size(928, 2200);
             this.pnlContent.TabIndex = 1;
             // 
             // flpWallets
             // 
             this.flpWallets.AutoScroll = true;
-            this.flpWallets.Location = new System.Drawing.Point(0, 1050);
+            this.flpWallets.Location = new System.Drawing.Point(0, 1420);
             this.flpWallets.Name = "flpWallets";
             this.flpWallets.Size = new System.Drawing.Size(945, 700);
-            this.flpWallets.TabIndex = 3;
+            this.flpWallets.TabIndex = 4;
+            // 
+            // pnlTransferCard
+            // 
+            this.pnlTransferCard.BackColor = System.Drawing.Color.White;
+            this.pnlTransferCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTransferCard.Controls.Add(this.lblTransferHint);
+            this.pnlTransferCard.Controls.Add(this.btnKirimTransfer);
+            this.pnlTransferCard.Controls.Add(this.btnResetTransfer);
+            this.pnlTransferCard.Controls.Add(this.txtJumlahTransfer);
+            this.pnlTransferCard.Controls.Add(this.lblJumlahTransfer);
+            this.pnlTransferCard.Controls.Add(this.cbWalletTujuan);
+            this.pnlTransferCard.Controls.Add(this.lblWalletTujuan);
+            this.pnlTransferCard.Controls.Add(this.cbWalletAsal);
+            this.pnlTransferCard.Controls.Add(this.lblWalletAsal);
+            this.pnlTransferCard.Controls.Add(this.pnlTransferHeader);
+            this.pnlTransferCard.Location = new System.Drawing.Point(0, 1050);
+            this.pnlTransferCard.Name = "pnlTransferCard";
+            this.pnlTransferCard.Size = new System.Drawing.Size(945, 350);
+            this.pnlTransferCard.TabIndex = 3;
+            // 
+            // lblTransferHint
+            // 
+            this.lblTransferHint.AutoSize = true;
+            this.lblTransferHint.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lblTransferHint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblTransferHint.Location = new System.Drawing.Point(350, 315);
+            this.lblTransferHint.Name = "lblTransferHint";
+            this.lblTransferHint.Size = new System.Drawing.Size(426, 13);
+            this.lblTransferHint.TabIndex = 9;
+            this.lblTransferHint.Text = "* Semua field di atas wajib diisi untuk melakukan transfer antar wallet";
+            // 
+            // btnKirimTransfer
+            // 
+            this.btnKirimTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(70)))), ((int)(((byte)(229)))));
+            this.btnKirimTransfer.FlatAppearance.BorderSize = 0;
+            this.btnKirimTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKirimTransfer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnKirimTransfer.ForeColor = System.Drawing.Color.White;
+            this.btnKirimTransfer.Location = new System.Drawing.Point(780, 260);
+            this.btnKirimTransfer.Name = "btnKirimTransfer";
+            this.btnKirimTransfer.Size = new System.Drawing.Size(140, 40);
+            this.btnKirimTransfer.TabIndex = 8;
+            this.btnKirimTransfer.Text = "Kirim Transfer";
+            this.btnKirimTransfer.UseVisualStyleBackColor = false;
+            this.btnKirimTransfer.Click += new System.EventHandler(this.btnKirimTransfer_Click);
+            // 
+            // btnResetTransfer
+            // 
+            this.btnResetTransfer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(213)))), ((int)(((byte)(219)))));
+            this.btnResetTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetTransfer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnResetTransfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
+            this.btnResetTransfer.Location = new System.Drawing.Point(690, 260);
+            this.btnResetTransfer.Name = "btnResetTransfer";
+            this.btnResetTransfer.Size = new System.Drawing.Size(80, 40);
+            this.btnResetTransfer.TabIndex = 7;
+            this.btnResetTransfer.Text = "Reset";
+            this.btnResetTransfer.UseVisualStyleBackColor = true;
+            this.btnResetTransfer.Click += new System.EventHandler(this.btnResetTransfer_Click);
+            // 
+            // txtJumlahTransfer
+            // 
+            this.txtJumlahTransfer.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtJumlahTransfer.Location = new System.Drawing.Point(500, 135);
+            this.txtJumlahTransfer.Name = "txtJumlahTransfer";
+            this.txtJumlahTransfer.Size = new System.Drawing.Size(420, 25);
+            this.txtJumlahTransfer.TabIndex = 6;
+            // 
+            // lblJumlahTransfer
+            // 
+            this.lblJumlahTransfer.AutoSize = true;
+            this.lblJumlahTransfer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lblJumlahTransfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
+            this.lblJumlahTransfer.Location = new System.Drawing.Point(500, 110);
+            this.lblJumlahTransfer.Name = "lblJumlahTransfer";
+            this.lblJumlahTransfer.Size = new System.Drawing.Size(115, 19);
+            this.lblJumlahTransfer.TabIndex = 5;
+            this.lblJumlahTransfer.Text = "$ Jumlah Transfer";
+            // 
+            // cbWalletTujuan
+            // 
+            this.cbWalletTujuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWalletTujuan.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbWalletTujuan.FormattingEnabled = true;
+            this.cbWalletTujuan.Location = new System.Drawing.Point(25, 210);
+            this.cbWalletTujuan.Name = "cbWalletTujuan";
+            this.cbWalletTujuan.Size = new System.Drawing.Size(420, 25);
+            this.cbWalletTujuan.TabIndex = 4;
+            // 
+            // lblWalletTujuan
+            // 
+            this.lblWalletTujuan.AutoSize = true;
+            this.lblWalletTujuan.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lblWalletTujuan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
+            this.lblWalletTujuan.Location = new System.Drawing.Point(25, 185);
+            this.lblWalletTujuan.Name = "lblWalletTujuan";
+            this.lblWalletTujuan.Size = new System.Drawing.Size(164, 19);
+            this.lblWalletTujuan.TabIndex = 3;
+            this.lblWalletTujuan.Text = "Wallet Tujuan (Penerima)";
+            // 
+            // cbWalletAsal
+            // 
+            this.cbWalletAsal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWalletAsal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbWalletAsal.FormattingEnabled = true;
+            this.cbWalletAsal.Location = new System.Drawing.Point(25, 135);
+            this.cbWalletAsal.Name = "cbWalletAsal";
+            this.cbWalletAsal.Size = new System.Drawing.Size(420, 25);
+            this.cbWalletAsal.TabIndex = 2;
+            // 
+            // lblWalletAsal
+            // 
+            this.lblWalletAsal.AutoSize = true;
+            this.lblWalletAsal.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lblWalletAsal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
+            this.lblWalletAsal.Location = new System.Drawing.Point(25, 110);
+            this.lblWalletAsal.Name = "lblWalletAsal";
+            this.lblWalletAsal.Size = new System.Drawing.Size(148, 19);
+            this.lblWalletAsal.TabIndex = 1;
+            this.lblWalletAsal.Text = "Wallet Asal (Pengirim)";
+            // 
+            // pnlTransferHeader
+            // 
+            this.pnlTransferHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(102)))), ((int)(((byte)(241)))));
+            this.pnlTransferHeader.Controls.Add(this.lblTransferChevron);
+            this.pnlTransferHeader.Controls.Add(this.lblTransferIcon);
+            this.pnlTransferHeader.Controls.Add(this.lblTransferSubtitle);
+            this.pnlTransferHeader.Controls.Add(this.lblTransferTitle);
+            this.pnlTransferHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTransferHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlTransferHeader.Name = "pnlTransferHeader";
+            this.pnlTransferHeader.Size = new System.Drawing.Size(943, 90);
+            this.pnlTransferHeader.TabIndex = 0;
+            // 
+            // lblTransferChevron
+            // 
+            this.lblTransferChevron.AutoSize = true;
+            this.lblTransferChevron.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTransferChevron.ForeColor = System.Drawing.Color.White;
+            this.lblTransferChevron.Location = new System.Drawing.Point(900, 30);
+            this.lblTransferChevron.Name = "lblTransferChevron";
+            this.lblTransferChevron.Size = new System.Drawing.Size(25, 25);
+            this.lblTransferChevron.TabIndex = 3;
+            this.lblTransferChevron.Text = "˄";
+            // 
+            // lblTransferIcon
+            // 
+            this.lblTransferIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(180)))), ((int)(((byte)(252)))));
+            this.lblTransferIcon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTransferIcon.ForeColor = System.Drawing.Color.White;
+            this.lblTransferIcon.Location = new System.Drawing.Point(25, 25);
+            this.lblTransferIcon.Name = "lblTransferIcon";
+            this.lblTransferIcon.Size = new System.Drawing.Size(40, 40);
+            this.lblTransferIcon.TabIndex = 2;
+            this.lblTransferIcon.Text = "⇄";
+            this.lblTransferIcon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTransferSubtitle
+            // 
+            this.lblTransferSubtitle.AutoSize = true;
+            this.lblTransferSubtitle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(231)))), ((int)(((byte)(255)))));
+            this.lblTransferSubtitle.Location = new System.Drawing.Point(75, 50);
+            this.lblTransferSubtitle.Name = "lblTransferSubtitle";
+            this.lblTransferSubtitle.Size = new System.Drawing.Size(262, 17);
+            this.lblTransferSubtitle.TabIndex = 1;
+            this.lblTransferSubtitle.Text = "Kirim saldo dari satu wallet ke wallet lainnya";
+            // 
+            // lblTransferTitle
+            // 
+            this.lblTransferTitle.AutoSize = true;
+            this.lblTransferTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTransferTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTransferTitle.Location = new System.Drawing.Point(75, 20);
+            this.lblTransferTitle.Name = "lblTransferTitle";
+            this.lblTransferTitle.Size = new System.Drawing.Size(193, 20);
+            this.lblTransferTitle.TabIndex = 0;
+            this.lblTransferTitle.Text = "Transfer Antar Wallet";
             // 
             // pnlTransactionCard
             // 
@@ -431,6 +627,21 @@ namespace MangsIpulAsli
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSimpanTransaksi;
         private System.Windows.Forms.Label lblWajibHint;
+        private System.Windows.Forms.Panel pnlTransferCard;
+        private System.Windows.Forms.Panel pnlTransferHeader;
+        private System.Windows.Forms.Label lblTransferTitle;
+        private System.Windows.Forms.Label lblTransferSubtitle;
+        private System.Windows.Forms.Label lblTransferIcon;
+        private System.Windows.Forms.Label lblTransferChevron;
+        private System.Windows.Forms.Label lblWalletAsal;
+        private System.Windows.Forms.ComboBox cbWalletAsal;
+        private System.Windows.Forms.Label lblWalletTujuan;
+        private System.Windows.Forms.ComboBox cbWalletTujuan;
+        private System.Windows.Forms.Label lblJumlahTransfer;
+        private System.Windows.Forms.TextBox txtJumlahTransfer;
+        private System.Windows.Forms.Button btnResetTransfer;
+        private System.Windows.Forms.Button btnKirimTransfer;
+        private System.Windows.Forms.Label lblTransferHint;
         private System.Windows.Forms.FlowLayoutPanel flpWallets;
     }
 }
